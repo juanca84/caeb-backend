@@ -1,0 +1,9 @@
+logs/*
+node_modules/
+
+src/config/config.development.js
+src/config/config.test.js
+src/config/config.production.js
+config/config.js
+npm-debug.log
+.jshintrc
