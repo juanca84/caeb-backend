@@ -2,11 +2,15 @@
 Archivo con los metodos necesarios para la asignacion de un administrador
 introducido por parametro e inactivacion del administrador por defecto.
  */
-console.log('12345678')
-
+const config = require(`../config/config`)()
 const XLSX = require('xlsx')
 const workbook = XLSX.readFile(`${__dirname}/CAEB_2011.xlsx`)
 const sheetNameList = workbook.SheetNames
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize(config.database, config.username,config.password,config.params)
+const modelos = require('../model')(sequelize).models
+const Clasificador = modelos.clasificador
+
 
 //console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheetNameList[0]]))
 //console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheetNameList[0]]))
@@ -50,5 +54,6 @@ const sheetNameList = workbook.SheetNames
   data.shift()
   data.shift()
   console.log(data)
+  Clasificador.create(data)
   //console.log(headers)
 //})
