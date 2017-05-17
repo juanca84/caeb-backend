@@ -21,12 +21,12 @@ module.exports = (sequelize, DataType) => {
         },
         fecha_inicio: {
             type: DataType.STRING,
-            allowNull: false,
+            allowNull: true,
             xlabel: 'Fecha de inicio',
         },
         fecha_fin: {
             type: DataType.STRING,
-            allowNull: false,
+            allowNull: true,
             xlabel: 'Fecha fin',
         },
         token: {
