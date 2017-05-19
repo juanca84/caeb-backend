@@ -2,9 +2,9 @@
 Archivo con los metodos necesarios para la asignacion de un administrador
 introducido por parametro e inactivacion del administrador por defecto.
  */
-importarClasificadores()
+guardarClasificadores()
 
-function importarClasificadores () {
+function guardarClasificadores () {
   return new Promise((resolve, reject) => {
     const config = require(`../config/config`)()
     const Sequelize = require('sequelize')
@@ -12,11 +12,12 @@ function importarClasificadores () {
     const modelos = require('../model')(sequelize).models
     const Clasificador = modelos.clasificadores
     const XLSX = require('xlsx')
+    const async = require('async')
     const workbook = XLSX.readFile(`${__dirname}/CAEB_2011.xlsx`)
     const worksheet = workbook.Sheets['Hoja1']
     const headers = {}
     const data = []
-    let clasificador = null
+    Clasificador.destroy({truncate: true})
     let filaAux = 0
     let response = false
     let seccion = null
@@ -25,8 +26,10 @@ function importarClasificadores () {
     let clase = null
     let tipo = null
     for (const z in worksheet) {
-     if (z[0] === '!') continue
+     //async.eachSeries(worksheet, function(z, cb) {
+     //if (z[0] === '!') continue
      //parse out the column, row, and value
+     console.log('z: ',z)
      let tt = 0
      for (let i = 0; i < z.length; i++) {
        if (!isNaN(z[i])) {
@@ -39,7 +42,7 @@ function importarClasificadores () {
      const value = worksheet[z].v
      if (row === 1 && value) {
        headers[col] = value
-       continue
+       //continue
      }
      if (!data[row]) data[row] = {}
      if (headers[col] === 'DESCRIPCIÓN') {
@@ -49,37 +52,17 @@ function importarClasificadores () {
        data[row]['codigo'] = value
      }
      if (filaAux !== row) {
-       if (data[filaAux]) {
-         if (data[filaAux]['tipo'] === 'SUBCLASE') {
-           tipo = 'CLASE'
-         } else if (data[filaAux]['tipo'] === 'CLASE') {
-           tipo = 'GRUPO'
-         } else if (data[filaAux]['tipo'] === 'GRUPO') {
-           tipo = 'DIVISION'
-         } else if (data[filaAux]['tipo'] === 'DIVISIÓN') {
-           tipo = 'SECCION'
-         }
-       }
-        Clasificador.findAll({
-          limit: 1,
-          where: { tipo },
-          order: [ [ 'id', 'DESC' ]]
-        }).then(function(entries){
-          //only difference is that you get users list limited to 1
-          //entries[0]
-        })
-       guardarClasificador(Clasificador, data[filaAux])
+       persitirClasificador(Clasificador, data[filaAux])
        .then(response => {
-         console.log(response)
+         //console.log(response)
        })
        filaAux = row
      }
-    }
-    console.log('ultimo: ')
+   })
   })
 }
 
-function guardarClasificador (pModelo, data) {
+function persitirClasificador (pModelo, data) {
   return new Promise((resolve, reject) => {
     pModelo.create(data)
     .then(pRespuesta =>

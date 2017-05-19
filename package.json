@@ -16,8 +16,9 @@
     "parchar": "node parches/parchar.js",
     "instalar": "npm install && node parches/parchar.js",
     "gen-semillas": "node generarSeeders.js",
-    "importar": "node src/scripts/importar.js",
-    "truncar": "node src/scripts/truncar.js"
+    "importar": "node src/scripts/importar.js && node src/scripts/testear.js",
+    "truncar": "node src/scripts/truncar.js",
+    "testear": "node src/scripts/testear.js"
   },
   "keywords": [
     "node",
