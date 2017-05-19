@@ -5,21 +5,26 @@ introducido por parametro e inactivacion del administrador por defecto.
 importarClasificadores()
 
 function importarClasificadores () {
- return new Promise((resolve, reject) => {
-   const config = require(`../config/config`)()
-   const XLSX = require('xlsx')
-   const workbook = XLSX.readFile(`${__dirname}/CAEB_2011.xlsx`)
-   const Sequelize = require('sequelize')
-   const sequelize = new Sequelize(config.database, config.username, config.password, config.params)
-   const modelos = require('../model')(sequelize).models
-   const Clasificador = modelos.clasificadores
-   const worksheet = workbook.Sheets['Hoja1']
-   const headers = {}
-   const data = []
-   let filaAux = 0
-   let response = false
-   let contadorRegistro = 0
-   for (const z in worksheet) {
+  return new Promise((resolve, reject) => {
+    const config = require(`../config/config`)()
+    const Sequelize = require('sequelize')
+    const sequelize = new Sequelize(config.database, config.username, config.password, config.params)
+    const modelos = require('../model')(sequelize).models
+    const Clasificador = modelos.clasificadores
+    const XLSX = require('xlsx')
+    const workbook = XLSX.readFile(`${__dirname}/CAEB_2011.xlsx`)
+    const worksheet = workbook.Sheets['Hoja1']
+    const headers = {}
+    const data = []
+    let clasificador = null
+    let filaAux = 0
+    let response = false
+    let seccion = null
+    let division = null
+    let grupo = null
+    let clase = null
+    let tipo = null
+    for (const z in worksheet) {
      if (z[0] === '!') continue
      //parse out the column, row, and value
      let tt = 0
@@ -44,26 +49,48 @@ function importarClasificadores () {
        data[row]['codigo'] = value
      }
      if (filaAux !== row) {
-       response = Clasificador.create(data[filaAux])
-                              .then((user) => {
-                                return true
-                              })
-                              .catch(pError => {
-                                if (pError.name) {
-                                 //  if (pError.name !== 'Error') console.log('Ha ocurrido un error al procesar su solicitud.')
-                                 //  else
-                                  //console.error('\nError en el registro: ', pError.message)
-                                } else {
-                                  //console.log(pError)
-                                }
-                                return false
-                              })
-       console.log (response)
-       if (response === true ) console.log('Exito')
-       else console.log('Super Fail')
+       if (data[filaAux]) {
+         if (data[filaAux]['tipo'] === 'SUBCLASE') {
+           tipo = 'CLASE'
+         } else if (data[filaAux]['tipo'] === 'CLASE') {
+           tipo = 'GRUPO'
+         } else if (data[filaAux]['tipo'] === 'GRUPO') {
+           tipo = 'DIVISION'
+         } else if (data[filaAux]['tipo'] === 'DIVISIÓN') {
+           tipo = 'SECCION'
+         }
+       }
+        Clasificador.findAll({
+          limit: 1,
+          where: { tipo },
+          order: [ [ 'id', 'DESC' ]]
+        }).then(function(entries){
+          //only difference is that you get users list limited to 1
+          //entries[0]
+        })
+       guardarClasificador(Clasificador, data[filaAux])
+       .then(response => {
+         console.log(response)
+       })
        filaAux = row
      }
-   }
-   return resolve(true)
- })
+    }
+    console.log('ultimo: ')
+  })
+}
+
+function guardarClasificador (pModelo, data) {
+  return new Promise((resolve, reject) => {
+    pModelo.create(data)
+    .then(pRespuesta =>
+      resolve(pRespuesta.dataValues)
+    )
+    .catch(pError => {
+      if (pError.name) {
+        console.error('\nError en el registro: ', pError.message)
+      } else {
+        console.log(pError)
+      }
+    })
+  })
 }

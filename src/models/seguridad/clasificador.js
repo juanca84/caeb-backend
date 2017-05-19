@@ -28,11 +28,19 @@ module.exports = (sequelize, DataType) => {
       allowNull: false,
       xlabel: 'Tipo de clasificador',
     },
+    id_padre: {
+      type: DataType.INTEGER,
+      allowNull: true,
+      xlabel: 'Identificador del padre',
+    },
   },{
     createdAt: '_fecha_creacion',
     updatedAt: '_fecha_modificacion',
     freezeTableName: true,
     classMethods: {
+      associate: models => {
+        models.clasificadores.belongsTo(models.clasificadores, { as: 'clasificador', foreignKey: 'id_padre' })
+      },
     },
   })
   return clasificador
