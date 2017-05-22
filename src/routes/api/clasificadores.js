@@ -27,6 +27,13 @@ module.exports = app => {
       })
       .then(pClasificadores => {
         if (pClasificadores) {
+
+          obtenerPadres(Clasificador, pClasificadores[0].dataValues.codigo)
+          .then((respuesta) => {
+            console.log(respuesta)
+          })
+
+          //console.log(obtenerPadres (pClasificadores[0].dataValues.codigo))
           res.status(200).send(util.formatearMensaje('EXITO', 'Obtencion de datos exitoso', { total: pClasificadores.length, datos: pClasificadores }))
         } else {
           res.status(200).send(util.formatearMensaje('EXITO', 'No hay datos', { total: 0, datos: [] }))
@@ -59,6 +66,70 @@ module.exports = app => {
     })
     .catch(pError => {
       res.status(412).send(util.formatearMensaje('ERROR', pError))
+    })
+  })
+}
+function obtenerPadres (pModel, pCodSubClase) {
+  const util = require('../../lib/util')
+  return new Promise((resolve, reject) => {
+    let subclase = null
+    let clase = null
+    let grupo = null
+    pModel.findOne(
+      {
+        where: {
+          codigo: pCodSubClase,
+          tipo: 'SUBCLASE'
+        }
+      }
+    )
+    .then(pSubClase => {
+      subclase = pSubClase.dataValues
+    })
+    .then(pSubClase => {
+      pModel.findOne(
+        {
+          where: {
+            codigo: subclase.codigo_padre,
+            tipo: 'CLASE'
+          }
+        }
+      )
+      .then(pClase => {
+        clase = pClase.dataValues
+      })
+      .then(() => {
+        pModel.findOne(
+          {
+            where: {
+              codigo: clase.codigo_padre,
+              tipo: 'GRUPO'
+            }
+          }
+        )
+        .then(pGrupo => {
+          grupo = pGrupo.dataValues
+          console.log(grupo)
+        })
+        .then(() => {
+          return resolve({
+            grupo: grupo,
+            clase: clase,
+            subclase: subclase
+          })
+        })
+        .catch(pError => {
+          console.log('Revisando el Error', pError)
+        })
+      })
+      .catch(pError => {
+        console.log('Revisando el Error', pError)
+        //res.status(412).send(util.formatearMensaje('ERROR', pError))
+      })
+    })
+    .catch(pError => {
+      console.log('Revisando el Error', pError)
+      //res.status(412).send(util.formatearMensaje('ERROR', pError))
     })
   })
 }
