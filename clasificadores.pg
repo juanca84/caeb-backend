@@ -1,0 +1,1795 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: clasificadores; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE clasificadores (
+    id integer NOT NULL,
+    codigo character varying,
+    descripcion character varying,
+    tipo character varying,
+    codigo_padre character varying
+);
+
+
+ALTER TABLE clasificadores OWNER TO postgres;
+
+--
+-- Name: clasificadores_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE clasificadores_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE clasificadores_id_seq OWNER TO postgres;
+
+--
+-- Name: clasificadores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE clasificadores_id_seq OWNED BY clasificadores.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY clasificadores ALTER COLUMN id SET DEFAULT nextval('clasificadores_id_seq'::regclass);
+
+
+--
+-- Data for Name: clasificadores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY clasificadores (id, codigo, descripcion, tipo, codigo_padre) FROM stdin;
+8541	A	AGRICULTURA, GANADERÍA, CAZA , PESCA Y SILVICULTURA	SECCION	\N
+8542	01	AGRICULTURA, GANADERÍA, CAZA Y SERVICIOS CONEXOS	DIVISION	A
+8543	011	Cultivo de plantas no perennes	GRUPO	01
+8544	0111	Cultivo de cereales, legumbres y semillas oleaginosas	CLASE	011
+8545	01111	Cultivo de cereales	SUBCLASE	0111
+8546	01112	Cultivo de legumbres secas para grano	SUBCLASE	0111
+8547	01113	Cultivo de semillas oleaginosas	SUBCLASE	0111
+8548	0112	Cultivo de hortalizas	CLASE	011
+8549	01121	Cultivo de hortalizas de raíz	SUBCLASE	0112
+8550	01122	Cultivo de hortalizas de flor y fruto	SUBCLASE	0112
+8551	01123	Cultivo de hortalizas de hoja	SUBCLASE	0112
+8552	01124	Cultivo de hortalizas de bulbo	SUBCLASE	0112
+8553	01125	Cultivo de legumbres frescas	SUBCLASE	0112
+8554	0113	Cultivo de tubérculos	CLASE	011
+8555	01130	Cultivo de tubérculos	SUBCLASE	0113
+8556	0114	Cultivo de caña de azúcar	CLASE	011
+8557	01140	Cultivo de caña de azúcar	SUBCLASE	0114
+8558	0115	Cultivo de plantas para la obtención de fibras	CLASE	011
+8559	01150	Cultivo de plantas para la obtención de fibras	SUBCLASE	0115
+8560	0116	Cultivo de plantas forrajeras	CLASE	011
+8561	01160	Inscripción	SUBCLASE	0116
+8562	0117	Cultivo de flores	CLASE	011
+8563	01170	Cultivo de flores	SUBCLASE	0117
+8564	0119	Otros cultivos no perennes n.c.p.	CLASE	011
+8565	01191	Cultivo de tabaco	SUBCLASE	0119
+8566	01199	Otros cultivos no perennes n.c.p.	SUBCLASE	0119
+8567	012	Cultivo de plantas perennes	GRUPO	01
+8568	0121	Cultivo de frutas de pepita y grano	CLASE	012
+8569	01210	Cultivo de frutas de pepita y grano	SUBCLASE	0121
+8570	0122	Cultivo de frutas tropicales y subtropicales	CLASE	012
+8571	01220	Cultivo de frutas tropicales y subtropicales	SUBCLASE	0122
+8572	0123	Cultivos de frutas cítricas	CLASE	012
+8573	01230	Cultivos de frutas cítricas	SUBCLASE	0123
+8574	0124	Cultivo de frutas de carozo (hueso)	CLASE	012
+8575	01240	Cultivo de frutas de carozo (hueso)	SUBCLASE	0124
+8576	0125	Cultivo de frutas secas	CLASE	012
+8577	01250	Cultivo de frutas secas	SUBCLASE	0125
+8578	0126	Cultivo de frutos oleaginosos	CLASE	012
+8579	01260	Cultivo de frutos oleaginosos	SUBCLASE	0126
+8580	0127	Cultivo de plantas con las que se preparan bebidas	CLASE	012
+8581	01270	Cultivo de plantas con las que se preparan bebidas	SUBCLASE	0127
+8582	0128	Cultivo de especias, plantas aromáticas, medicinales y farmacéuticas	CLASE	012
+8583	01281	Cultivo de especias, plantas aromáticas, medicinales y farmacéuticas	SUBCLASE	0128
+8584	01282	Cultivo de hoja de coca	SUBCLASE	0128
+8585	0129	Cultivo de otras plantas perennes	CLASE	012
+8586	01290	Cultivo de otras plantas perennes	SUBCLASE	0129
+8587	013	Propagación de plantas	GRUPO	01
+8588	0131	Propagación de plantas	CLASE	013
+8589	01310	El cultivo de plantas para propagación	SUBCLASE	0131
+8590	0132	Cultivo de semillas	CLASE	013
+8591	01320	Cultivo de semillas	SUBCLASE	0132
+8592	014	Cría de animales en general	GRUPO	01
+8593	0141	Inscripción	CLASE	014
+8594	01411	Cría y reproducción de ganado bovino y búfalos	SUBCLASE	0141
+8595	01412	Producción de leche cruda de vaca y de búfala	SUBCLASE	0141
+8596	01413	Producción de semen de bovino	SUBCLASE	0141
+8597	0142	Cría de ganado equino	CLASE	014
+8598	01420	Cría de ganado equino	SUBCLASE	0142
+8599	0143	Cría de ganado camélido o auquénido	CLASE	014
+8600	01430	Cría de ganado camélido o auquénido	SUBCLASE	0143
+8601	0144	Cría de ganado ovino y caprino	CLASE	014
+8602	01441	Cría de ganado ovino	SUBCLASE	0144
+8603	01442	Cría de ganado caprino	SUBCLASE	0144
+8604	0145	Cría de ganado porcino	CLASE	014
+8605	01450	Cría de ganado porcino	SUBCLASE	0145
+8606	0146	Cría de aves de corral	CLASE	014
+8607	01461	Cría y reproducción de aves de corral	SUBCLASE	0146
+8608	01462	Producción de huevos	SUBCLASE	0146
+8609	0147	Apicultura	CLASE	014
+8610	01470	Apicultura	SUBCLASE	0147
+8611	0149	Cría de otros animales	CLASE	014
+8612	01491	Cría animales invertebrados	SUBCLASE	0149
+8613	01492	Cría de conejos cuyes y castilla	SUBCLASE	0149
+8614	01493	Cría de animales domésticos y semidomesticos	SUBCLASE	0149
+8615	01499	Cría de otros animales n.c.p.	SUBCLASE	0149
+8616	015	Cultivo de productos agrícolas en combinación con la cría de animales (explotación mixta)	GRUPO	01
+8617	0150	Cultivo de productos agrícolas en combinación con la cría de animales (explotación mixta)	CLASE	015
+8618	01500	Cultivo de productos agrícolas en combinación con la cría de animales (explotación mixta)	SUBCLASE	0150
+9636	55106	Servicios de alojamientos	SUBCLASE	5510
+8619	016	Actividades de servicios agrícolas, ganaderos y actividades poscosecha	GRUPO	01
+8620	0161	Actividades de apoyo a la agricultura a cambio de retribución o por contrata	CLASE	016
+8621	01611	Actividades de servicios agrícolas	SUBCLASE	0161
+8622	01612	Suministro de maquinaría agrícola con operadores	SUBCLASE	0161
+8623	01619	Otros servicios agrícolas	SUBCLASE	0161
+8624	0162	Actividades de apoyo a la ganadería a cambio de retribución o por contrata	CLASE	016
+8625	01621	Cuidado, albergue y reproducción de animales	SUBCLASE	0162
+8626	01622	Servicios de inseminación artificial	SUBCLASE	0162
+8627	01623	Servicios de inspección y asistencia sanitaria a los animales	SUBCLASE	0162
+8628	01624	Servicios de marcación, capadura o castrado	SUBCLASE	0162
+8629	01629	Otros servicios ganaderos n.c.p.	SUBCLASE	0162
+8630	0163	Actividades poscosecha	CLASE	016
+8631	01630	Actividades poscosecha	SUBCLASE	0163
+8632	0164	Tratamiento de semillas	CLASE	016
+8633	01640	Tratamiento de semillas	SUBCLASE	0164
+8634	017	Caza ordinaria, mediante trampas y actividades de servicios conexas	GRUPO	01
+8635	0170	Caza ordinaria, mediante trampas y actividades de servicios conexas	CLASE	017
+8636	01700	Caza ordinaria, mediante trampas y actividades de servicios conexas	SUBCLASE	0170
+8637	02	SILVICULTURA, EXTRACCIÓN DE MADERA Y ACTIVIDADES DE SERVICIOS CONEXAS	DIVISION	01700
+8638	021	Silvicultura, extracción de madera y actividades de servicios conexos	GRUPO	02
+8639	0210	Plantaciones forestales, conservación de bosques y zonas forestales; explotación de viveros forestales	CLASE	021
+8640	02100	Plantaciones forestales, conservación de bosques y zonas forestales; explotación de viveros forestales	SUBCLASE	0210
+8641	022	Extracción de madera	GRUPO	02
+8642	0220	Extracción de madera	CLASE	022
+8643	02201	Extracción de madera en rolas (troncas)	SUBCLASE	0220
+8644	02202	Extracción de madera para combustible	SUBCLASE	0220
+8645	023	Recolección de productos forestales distintos de la madera	GRUPO	02
+8646	0230	Recolección de productos forestales distintos de la madera	CLASE	023
+8647	02301	Aprovechamiento de productos forestales no maderables	SUBCLASE	0230
+8648	02302	Aprovechamiento de productos forestales no maderables para combustible	SUBCLASE	0230
+8649	024	Servicios de apoyo a la silvicultura a cambio de una retribución o por contrata	GRUPO	02
+8650	0240	Servicios de apoyo a la silvicultura a cambio de una retribución o por contrata	CLASE	024
+8651	02401	Servicios de apoyo a la silvicultura a cambio de una retribución o por contrata	SUBCLASE	0240
+8652	02402	Consultoría en gestión forestal	SUBCLASE	0240
+8653	03	PESCA Y ACUICULTURA	DIVISION	02402
+8654	031	Pesca	GRUPO	03
+8655	0311	Pesca	CLASE	031
+8656	03110	Pesca  lacustre	SUBCLASE	0311
+8657	0312	Pesca fluvial	CLASE	031
+8658	03120	Pesca fluvial	SUBCLASE	0312
+8659	032	Acuicultura	GRUPO	03
+8660	0321	Explotación de criaderos de peces y granjas piscícolas	CLASE	032
+8661	03210	Explotación de criaderos de peces y granjas piscícolas	SUBCLASE	0321
+8662	0322	Actividades de servicios relacionados con la acuicultura	CLASE	032
+8663	03220	Actividades de servicios relacionados con la acuicultura	SUBCLASE	0322
+8664	B	EXPLOTACIÓN DE MINAS Y CANTERAS	SECCION	\N
+8665	05	EXTRACCIÓN DE CARBÓN DE PIEDRA Y LIGNITO	DIVISION	B
+8666	051	Extracción de carbón de piedra	GRUPO	05
+8667	0510	Extracción de carbón de piedra	CLASE	051
+8668	05100	Extracción de carbón de piedra	SUBCLASE	0510
+8669	052	Extracción de lignito	GRUPO	05
+8670	0520	Extracción de lignito	CLASE	052
+8671	05200	Extracción de lignito	SUBCLASE	0520
+8672	06	EXTRACCIÓN DE PETRÓLEO CRUDO Y GAS NATURAL	DIVISION	05200
+8673	061	Extracción de petróleo crudo	GRUPO	06
+8674	0610	Extracción de petróleo crudo	CLASE	061
+8675	06100	Extracción de petróleo crudo	SUBCLASE	0610
+8676	062	Extracción gas natural	GRUPO	06
+8677	0620	Extracción gas natural	CLASE	062
+8678	06200	Extracción gas natural	SUBCLASE	0620
+8679	07	EXTRACCIÓN DE MINERALES METALÍFEROS	DIVISION	06200
+8680	071	Extracción de minerales de hierro	GRUPO	07
+8681	0710	Extracción de minerales de hierro	CLASE	071
+8682	07100	Extracción de minerales de hierro	SUBCLASE	0710
+8683	072	Extracción de minerales metalíferos no ferrosos	GRUPO	07
+8684	0721	Extracción de minerales de uranio y torio	CLASE	072
+8685	07210	Extracción de minerales de uranio y torio	SUBCLASE	0721
+8686	0729	Extracción de otros minerales metalíferos no ferrosos	CLASE	072
+8687	07291	Extracción de minerales metalíferos no ferrosos	SUBCLASE	0729
+8688	07292	Extracción de metales preciosos	SUBCLASE	0729
+8689	08	EXPLOTACIÓN DE OTRAS MINAS Y CANTERAS	DIVISION	07292
+8690	081	Extracción de piedra, arena y arcilla	GRUPO	08
+10174	949	Actividades de otras asociaciones	GRUPO	94
+8691	0810	Extracción de piedra, arena y arcilla	CLASE	081
+8692	08101	Extracción de piedras	SUBCLASE	0810
+8693	08102	Extracción de yeso y anhidrita	SUBCLASE	0810
+8694	08103	Extracción de arenas	SUBCLASE	0810
+8695	08104	Extracción de arcilla	SUBCLASE	0810
+8696	089	Explotación de otras minas y canteras n.c.p.	GRUPO	08
+8697	0891	Extracción de minerales para la fabricación de abonos y productos químicos	CLASE	089
+8698	08910	Extracción de minerales para la fabricación de abonos y productos químicos	SUBCLASE	0891
+8699	0892	Extracción de turba	CLASE	089
+8700	08920	Extracción de turba	SUBCLASE	0892
+8701	0893	Extracción de sal	CLASE	089
+8702	08930	Extracción de sal	SUBCLASE	0893
+8703	0899	Explotación de otras minas y canteras n.c.p.	CLASE	089
+8704	08991	Extracción de piedras preciosas y semipreciosas	SUBCLASE	0899
+8705	08999	Explotación de otras minas y canteras	SUBCLASE	0899
+8706	09	ACTIVIDADES DE SERVICIOS DE APOYO PARA LA EXPLOTACIÓN   \r\nDE MINAS CANTERAS	DIVISION	08999
+8707	091	Actividades de exploración, prospección, perforación, sondeo y otros servicios relacionados con la extracción de petróleo y gas natural	GRUPO	09
+8708	0910	Actividades de exploración, prospección, perforación, sondeo y otros servicios relacionados con la extracción de petróleo y gas natural	CLASE	091
+8709	09100	Actividades de exploración, prospección, perforación, sondeo y otros servicios relacionados con la extracción de petróleo y gas natural	SUBCLASE	0910
+8710	099	Actividades de exploración, prospección, drenaje, perforación y otros servicios relacionados en la explotación de minas y canteras	GRUPO	09
+8711	0990	Actividades de exploración, prospección, drenaje, perforación y otros servicios relacionados en la explotación de minas y canteras	CLASE	099
+8712	09900	Actividades de exploración, prospección, drenaje, perforación y otros servicios relacionados en la explotación de minas y canteras	SUBCLASE	0990
+8713	C	INDUSTRIA MANUFACTURERA	SECCION	\N
+8714	10	ELABORACIÓN DE PRODUCTOS ALIMENTICIOS	DIVISION	C
+8715	101	Producción, procesamiento y conservación de carne y productos cárnicos	GRUPO	10
+8716	1010	Explotación de mataderos, producción, procesamiento y conservación de carne y productos cárnicos	CLASE	101
+8717	10101	Matanza de ganado bovino y procesamiento de su carne	SUBCLASE	1010
+8718	10102	Matanza de ganado porcino y procesamiento de su carne	SUBCLASE	1010
+8719	10103	Matanza de ganado camélido y procesamiento de su carne	SUBCLASE	1010
+8720	10104	Matanza, producción y procesamiento de carne de aves	SUBCLASE	1010
+8721	10105	Matanza de otro tipo de ganado y procesamiento de su carne	SUBCLASE	1010
+8722	10106	Elaboración de embutidos	SUBCLASE	1010
+8723	10107	Elaboración de otros productos cárnicos	SUBCLASE	1010
+8724	10108	Elaboración de carne seca, salada y ahumada	SUBCLASE	1010
+8725	10109	Elaboración de otros subproductos cárnicos n.c.p.	SUBCLASE	1010
+8726	102	Elaboración y conservación de pescado y productos de pescado	GRUPO	10
+8727	1020	Elaboración y conservación de pescado y productos de pescado	CLASE	102
+8728	10200	Elaboración y conservación de pescado y productos de pescado	SUBCLASE	1020
+8729	103	Elaboración y conservación de frutas, hortalizas y tubérculos	GRUPO	10
+8730	1030	Elaboración y conservación de frutas, hortalizas y tubérculos	CLASE	103
+8731	10301	Elaboración de conservas de frutas, hortalizas y tubérculos inmersos en vinagre, aceite u otros conservantes	SUBCLASE	1030
+8732	10302	Elaboración de jugos naturales y sus concentrados de frutas y hortalizas	SUBCLASE	1030
+8733	10303	Elaboración de pulpas, jaleas, dulces y mermeladas obtenidos por cocción	SUBCLASE	1030
+8734	10304	Elaboración de frutas, hortalizas y tubérculos congelados, desecados, deshidratados, fritos y puré	SUBCLASE	1030
+8735	10309	Elaboración y conservación de frutas, hortalizas, tubérculos n.c.p.	SUBCLASE	1030
+8736	104	Elaboración de aceites y grasas de origen vegetal y animal	GRUPO	10
+8737	1040	Elaboración de aceites y grasas de origen vegetal y animal	CLASE	104
+8738	10401	Elaboración de aceites vegetales	SUBCLASE	1040
+8739	10402	Producción de harina y sémola de semillas oleaginosas	SUBCLASE	1040
+8740	10403	Elaboración de margarina y manteca vegetal	SUBCLASE	1040
+8741	10404	Producción de tortas y otros productos residuales de la elaboración de aceite	SUBCLASE	1040
+8742	10409	Elaboración de otros aceites y grasas de origen vegetal y animal n.c.p.	SUBCLASE	1040
+8743	105	Elaboración de productos lácteos	GRUPO	10
+8744	1050	Elaboración de productos lácteos	CLASE	105
+8745	10501	Elaboración de leches y productos lácteos	SUBCLASE	1050
+8746	10502	Elaboración de helados	SUBCLASE	1050
+8747	10503	Elaboración de quesos	SUBCLASE	1050
+8748	10504	Elaboración de yugurt	SUBCLASE	1050
+8749	10509	Elaboración de otros productos lácteos n.c.p.	SUBCLASE	1050
+8750	106	Beneficiado y elaboración de productos de molinería, almidones y productos derivados del almidón	GRUPO	10
+8751	1061	Beneficiado y elaboración de productos de molinería	CLASE	106
+8752	10611	Procesamiento de cereales: producción de harina, sémola y gránulos de trigo, avena, maíz y otros cereales	SUBCLASE	1061
+8753	10612	Beneficiado (descascarillado, pulido y blanqueado) y molienda de arroz	SUBCLASE	1061
+8754	10613	Beneficiado de quinua	SUBCLASE	1061
+8755	10614	Elaboración de alimentos mediante el tostado o insuflación de granos de cereales	SUBCLASE	1061
+8756	10619	Beneficiado y elaboración de otros productos de molinería n.c.p.	SUBCLASE	1061
+8757	1062	Elaboración de almidones y productos derivados del almidón	CLASE	106
+8758	10620	Elaboración de almidones y productos derivados del almidón	SUBCLASE	1062
+8759	107	Elaboración de otros productos alimenticios	GRUPO	10
+8760	1071	Elaboración de productos de panadería	CLASE	107
+8761	10711	Elaboración de pan	SUBCLASE	1071
+8762	10712	Elaboración de productos de pastelería	SUBCLASE	1071
+8763	10719	Elaboración de otros productos de panadería y pastelería n.c.p.	SUBCLASE	1071
+8764	1072	Elaboración de azúcar	CLASE	107
+8765	10721	Elaboración de azúcar de caña	SUBCLASE	1072
+8766	10722	Elaboración de azúcar de remolacha	SUBCLASE	1072
+8767	1073	Elaboración de cacao, chocolate y productos de confitería	CLASE	107
+8768	10731	Elaboración de cacao, manteca, grasa y aceite de cacao	SUBCLASE	1073
+8769	10732	Elaboración de chocolates y productos de chocolate	SUBCLASE	1073
+8770	10733	Elaboración de productos de confitería	SUBCLASE	1073
+8771	10734	Conservación en azúcar de frutas, nueces y partes de frutas	SUBCLASE	1073
+8772	1074	Elaboración de pastas, macarrones y fideos	CLASE	107
+8773	10740	Elaboración de pastas, macarrones y fideos	SUBCLASE	1074
+8774	1075	Elaboración de platos preparados, comidas sometidas a procesos de conservación, enlatado o congelado	CLASE	107
+8775	10750	Elaboración de platos preparados, comidas sometidas a procesos de conservación, enlatado o congelado	SUBCLASE	1075
+8776	1079	Elaboración de otros productos alimenticios n.c.p.	CLASE	107
+8777	10791	Tostado, torrado, molienda y fabricación de productos de café	SUBCLASE	1079
+8778	10792	Elaboración de té e infusiones de hierbas	SUBCLASE	1079
+8779	10793	Elaboración de especias, salsas y condimentos	SUBCLASE	1079
+8780	10794	Elaboración de sal de mesa (sal yodada)	SUBCLASE	1079
+8781	10795	Elaboración de concentrados artificiales	SUBCLASE	1079
+8782	10796	Elaboración de extractos de jugos de carne, sopas y caldos	SUBCLASE	1079
+8783	10797	Beneficiado del café	SUBCLASE	1079
+8784	10798	Beneficiado de la castaña	SUBCLASE	1079
+8785	10799	Elaboración de productos alimenticios n.c.p.	SUBCLASE	1079
+8786	108	Elaboración de alimentos preparados para animales	GRUPO	10
+8787	1080	Elaboración de alimentos preparados para animales	CLASE	108
+8788	10800	Elaboración de alimentos preparados para animales	SUBCLASE	1080
+8789	11	ELABORACIÓN DE BEBIDAS	DIVISION	10800
+8790	110	Elaboración de bebidas	GRUPO	11
+8791	1101	Destilación, rectificación y mezcla de bebidas alcohólicas	CLASE	110
+8792	11011	Elaboración de bebidas alcohólicas destiladas	SUBCLASE	1101
+8793	11012	Elaboración de singani y aguardientes	SUBCLASE	1101
+8794	1102	Elaboración de vinos	CLASE	110
+8795	11021	Elaboración de vinos	SUBCLASE	1102
+8796	11022	Elaboración de bebidas alcohólicas fermentadas pero no destiladas (chicha)	SUBCLASE	1102
+8797	1103	Producción de malta, elaboración de cerveza y otras  bebidas malteadas	CLASE	110
+8798	11030	Producción de malta, elaboración de cerveza y otras  bebidas malteadas	SUBCLASE	1103
+8799	1104	Elaboración de bebidas no alcohólicas; producción de aguas minerales y otras aguas embotelladas	CLASE	110
+8800	11041	Elaboración de bebidas gaseosas	SUBCLASE	1104
+8801	11042	Elaboración de aguas minerales, tónicas y otras aguas envasadas	SUBCLASE	1104
+8802	11049	Elaboración de otras bebidas, aromatizadas y/o edulcoradas, no alcohólicas	SUBCLASE	1104
+8803	12	ELABORACIÓN DE PRODUCTOS DE TABACO	DIVISION	11049
+8804	120	Elaboración de productos de tabaco	GRUPO	12
+8805	1200	Elaboración de productos de tabaco	CLASE	120
+8806	12000	Elaboración de productos de tabaco	SUBCLASE	1200
+8807	13	FABRICACIÓN DE PRODUCTOS TEXTILES	DIVISION	12000
+8808	131	Hilado, tejido y acabado de productos textiles	GRUPO	13
+8809	1311	Preparación e hilado de fibras textiles	CLASE	131
+8810	13110	Preparación e hilado de fibras textiles	SUBCLASE	1311
+8811	1312	Fabricación de telas	CLASE	131
+8812	13120	Fabricación de telas	SUBCLASE	1312
+8813	1313	Acabado de productos textiles: blanqueo, teñido, sanforizado, plisado, estampado serigráfico de productos textiles y prendas de vestir	CLASE	131
+8814	13130	Acabado de productos textiles: blanqueo, teñido, sanforizado, plisado, estampado serigráfico de productos textiles y prendas de vestir	SUBCLASE	1313
+8815	139	Fabricación de otros productos textiles	GRUPO	13
+8816	1391	Fabricación de tejidos de punto y ganchillo	CLASE	139
+8817	13910	Fabricación de tejidos de punto y ganchillo	SUBCLASE	1391
+8818	1392	Fabricación de artículos confeccionados de materiales textiles, excepto prendas de vestir	CLASE	139
+8941	2220	Fabricación de productos de plástico	CLASE	222
+8819	13921	Fabricación de frazadas, mantas de viaje, edredones, almohadas y otros artículos conexos	SUBCLASE	1392
+8820	13922	Fabricación de mantelería, toallas y paños de cocina	SUBCLASE	1392
+8821	13923	Fabricación de banderas, gallardetes, estandartes y similares	SUBCLASE	1392
+8822	13924	Fabricación de cortinas, cenefas, visillos, fundas para diferentes objetos	SUBCLASE	1392
+8823	13929	Fabricación de otros artículos confeccionados de materiales textiles, excepto prendas de vestir n.c.p.	SUBCLASE	1392
+8824	1393	Fabricación de tapices y alfombras	CLASE	139
+8825	13930	Fabricación de tapices y alfombras	SUBCLASE	1393
+8826	1394	Fabricación de cuerdas, cordeles, bramantes y redes	CLASE	139
+8827	13940	Fabricación de cuerdas, cordeles, bramantes, redes y mallas anudadas	SUBCLASE	1394
+8828	1399	Fabricación de otros productos textiles n.c.p.	CLASE	139
+8829	13991	Fabricación de artículos de pasamanería	SUBCLASE	1399
+8830	13992	Fabricación de encajes, tules y bordados en piezas, tiras o motivos decorativos	SUBCLASE	1399
+8831	13999	Fabricación de otros productos textiles n.c.p.	SUBCLASE	1399
+8832	14	FABRICACIÓN DE PRENDAS DE VESTIR	DIVISION	13999
+8833	141	Fabricación de prendas de vestir, excepto prendas de piel	GRUPO	14
+8834	1410	Fabricación de prendas de vestir, excepto prendas de piel	CLASE	141
+8835	14101	Fabricación de prendas de vestir para hombres, mujeres y niños	SUBCLASE	1410
+8836	14102	Fabricación de prendas de vestir de cuero	SUBCLASE	1410
+8837	14103	Fabricación de ropa de trabajo, uniformes y guardapolvos	SUBCLASE	1410
+8838	14104	Fabricación de ropa deportiva	SUBCLASE	1410
+8839	14105	Fabricación de sombreros y gorros	SUBCLASE	1410
+8840	14106	Fabricación de accesorios de vestir	SUBCLASE	1410
+8841	14107	Confección de prendas de vestir a medida	SUBCLASE	1410
+8842	14108	Confección de disfraces, trajes típicos y similares	SUBCLASE	1410
+8843	142	Fabricación de artículos de piel	GRUPO	14
+8844	1420	Fabricación de artículos de piel	CLASE	142
+8845	14201	Fabricación de prendas y accesorios de vestir de piel	SUBCLASE	1420
+8846	14202	Fabricación de artículos diversos de piel	SUBCLASE	1420
+8847	143	Fabricación de artículos de punto y ganchillo	GRUPO	14
+8848	1430	Fabricación de prendas de tejidos de punto y ganchillo	CLASE	143
+8849	14301	Fabricaciónde prendas de vestir tejidas a máquina o a mano	SUBCLASE	1430
+8850	14302	Fabricación de complementos de vestir tejidas a máquina o a mano	SUBCLASE	1430
+8851	14303	Fabricación de calcetines, medias y pantymedias	SUBCLASE	1430
+8852	15	CURTIDO Y ADOBO DE CUEROS; FABRICACIÓN DE MALETAS, BOLSOS DE MANO, ARTÍCULOS DE TALABARTERÍA Y GUARDICIONERÍA Y CALZADO	DIVISION	14303
+8853	151	Curtido y adobo de cueros; fabricación de maletas, bolsos de mano, artículos de talabartería y guarnicionería	GRUPO	15
+8854	1511	Curtido, teñido y adobo de cueros y pieles	CLASE	151
+8855	15111	Curtido, teñido y adobo de cueros	SUBCLASE	1511
+8856	15112	Curtido, teñido y adobo de pieles	SUBCLASE	1511
+8857	1512	Fabricación de maletas, bolsos de mano y artículos similares; artículos de talabartería y guarnicionería	CLASE	151
+8858	15120	Fabricación de maletas, bolsos de mano y artículos similares; artículos de talabartería y guarnicionería	SUBCLASE	1512
+8859	152	Fabricación de calzado	GRUPO	15
+8860	1520	Fabricación de calzado	CLASE	152
+8861	15201	Fabricación de calzado para todo uso y de cualquier material	SUBCLASE	1520
+8862	15202	Fabricación de partes de cuero para calzado	SUBCLASE	1520
+8863	16	PRODUCCIÓN DE MADERA Y FABRICACIÓN DE PRODUCTOS DE MADERA Y CORCHO, EXCEPTO MUEBLES, FABRICACIÓN DE ARTÍCULOS DE PAJA Y DE MATERIALES TRENZABLES	DIVISION	15202
+8864	161	Aserrado y cepillado de madera	GRUPO	16
+8865	1610	Aserrado, secado, tableado, descortezado y cepillado de madera	CLASE	161
+8866	16100	Aserrado, secado, tableado, descortezado y cepillado de madera	SUBCLASE	1610
+8867	162	Fabricación de productos de madera, corcho, paja y materiales trenzables	GRUPO	16
+8868	1621	Fabricación de hojas de madera, tableros de partículas a base de madera suficientemente delgadas	CLASE	162
+8869	16210	Fabricación de hojas de madera, tableros de partículas a base de madera suficientemente delgadas	SUBCLASE	1621
+8870	1622	Fabricación de partes y piezas de carpintería para edificios y construcciones de madera	CLASE	162
+8871	16220	Fabricación de partes y piezas de carpintería para edificios y construcciones de madera	SUBCLASE	1622
+8872	1623	Fabricación de recipientes de madera	CLASE	162
+8873	16230	Fabricación de recipientes de madera	SUBCLASE	1623
+8874	1629	Fabricación de otros productos de madera; de artículos de corcho, paja y materiales trenzables n.c.p.	CLASE	162
+8875	16290	Fabricación de otros productos de madera; de artículos de corcho, paja y materiales trenzables n.c.p.	SUBCLASE	1629
+8876	17	FABRICACIÓN DE PAPEL Y DE PRODUCTOS DE PAPEL	DIVISION	16290
+8877	170	Fabricación de papel y de productos de papel	GRUPO	17
+8878	1701	Fabricación de pasta de madera, papel y cartón	CLASE	170
+8879	17010	Fabricación de pasta de madera, papel y cartón	SUBCLASE	1701
+8880	1702	Fabricación de papel, cartón ondulado y envases de papel y cartón	CLASE	170
+8881	17020	Fabricación de papel, cartón ondulado y envases de papel y cartón	SUBCLASE	1702
+8882	1709	Fabricación de otros artículos de papel y cartón	CLASE	170
+8883	17091	Fabricación de artículos de papel de uso doméstico y para la higiene personal	SUBCLASE	1709
+8884	17092	Fabricación de papel para imprimir, escribir y otros papeles listos para su utilización	SUBCLASE	1709
+8885	17099	Fabricación de artículos de papelería de uso educativo y otros productos de papel	SUBCLASE	1709
+8886	18	IMPRESIÓN Y REPRODUCCIÓN DE GRABACIONES	DIVISION	17099
+8887	181	Impresión y actividades de servicios relacionadas con la impresión	GRUPO	18
+8888	1811	Actividades de impresión	CLASE	181
+8889	18110	Actividades de impresión	SUBCLASE	1811
+8890	1812	Actividades de encuadernación y otros servicios relacionadas con la impresión	CLASE	181
+8891	18120	Actividades de encuadernación y otros servicios relacionadas con la impresión	SUBCLASE	1812
+8892	182	Reproducción de grabaciones	GRUPO	18
+8893	1820	Reproducción de grabaciones	CLASE	182
+8894	18200	Reproducción de grabaciones	SUBCLASE	1820
+8895	19	FABRICACIÓN DE COQUE, PRODUCTOS DE LA REFINACIÓN DEL PETRÓLEO	DIVISION	18200
+8896	191	Fabricación de productos de hornos de coque	GRUPO	19
+8897	1910	Fabricación de productos de hornos de coque	CLASE	191
+8898	19100	Fabricación de productos de hornos de coque	SUBCLASE	1910
+8899	192	Fabricación de productos de la refinación del petróleo	GRUPO	19
+8900	1920	Fabricación de productos de la refinación del petróleo	CLASE	192
+8901	19201	Fabricación de combustibles líquidos o gaseosos	SUBCLASE	1920
+8902	19202	Fabricación de aceites o grasas combustibles a base de petróleo	SUBCLASE	1920
+8903	19209	Fabricación de otros productos a base de petróleo n.c.p.	SUBCLASE	1920
+8904	20	FABRICACIÓN DE SUSTANCIAS Y PRODUCTOS QUÍMICOS	DIVISION	19209
+8905	201	Fabricación de sustancias químicas básicas, de abonos y compuestos de nitrógeno y de plásticos y caucho sintético en formas primarias	GRUPO	20
+8906	2011	Fabricación de sustancias químicas básicas	CLASE	201
+8907	20111	Fabricación de gases industriales, aire líquido o comprimido, gases refrigerantes, gases inertes y otros compuestos orgánicos	SUBCLASE	2011
+8908	20119	Fabricación de otras sustancias químicas básicas n.c.p.	SUBCLASE	2011
+8909	2012	Fabricación de abonos y compuestos de nitrógeno	CLASE	201
+8910	20120	Fabricación de abonos y compuestos de nitrógeno	SUBCLASE	2012
+8911	2013	Fabricación de plásticos y caucho sintético en formas primarias	CLASE	201
+8912	20130	Fabricación de plásticos y caucho sintético en formas primarias	SUBCLASE	2013
+8913	202	Fabricación de otros productos químicos	GRUPO	20
+8914	2021	Fabricación de plaguicidas y otros productos químicos de uso agropecuario	CLASE	202
+8915	20210	Fabricación de plaguicidas y otros productos químicos de uso agropecuario	SUBCLASE	2021
+8916	2022	Fabricación de pinturas, barnices y productos de revestimiento similares, tintas de imprenta y masillas	CLASE	202
+8917	20220	Fabricación de pinturas, barnices y productos de revestimiento similares, tintas de imprenta y masillas	SUBCLASE	2022
+8918	2023	Fabricación de jabones y detergentes, preparados para limpiar y pulir, perfumes y preparados de tocador	CLASE	202
+8919	20231	Fabricación de jabones y detergentes	SUBCLASE	2023
+8920	20232	Fabricación de cosméticos, perfumes, productos de higiene y tocador	SUBCLASE	2023
+8921	20233	Fabricación de preparados para limpiar, pulir y desodorizar	SUBCLASE	2023
+8922	2029	Fabricación de otros productos químicos n c p	CLASE	202
+8923	20291	Fabricación de explosivos, productos pirotécnicos, detonadores y similares	SUBCLASE	2029
+8924	20292	Fabricación de colas, preparados adhesivos incluidos los preparados a base de caucho	SUBCLASE	2029
+8925	20293	Fabricación de tinta para escribir o dibujar y otras tintas, excluidas las de imprenta	SUBCLASE	2029
+8926	20299	Fabricación de otros productos químicos n.c.p.	SUBCLASE	2029
+8927	203	Fabricación de fibras artificiales	GRUPO	20
+8928	2030	Fabricación de fibras artificiales	CLASE	203
+8929	20300	Fabricación de fibras artificiales	SUBCLASE	2030
+8930	21	FABRICACIÓN DE PRODUCTOS FARMACÉUTICOS, SUSTANCIAS QUÍMICAS MEDICINALES Y PRODUCTOS BOTÁNICOS DE USO FARMACÉUTICO	DIVISION	20300
+8931	210	Fabricación de productos farmacéuticos, sustancias químicas medicinales y productos botánicos de uso farmacéutico	GRUPO	21
+8932	2100	Fabricación de productos farmacéuticos, sustancias químicas medicinales y productos botánicos de uso farmacéutico	CLASE	210
+8933	21000	Fabricación de productos farmacéuticos, sustancias químicas medicinales y productos botánicos de uso farmacéutico	SUBCLASE	2100
+8934	22	FABRICACIÓN DE PRODUCTOS DE CAUCHO Y PLÁSTICO	DIVISION	21000
+8935	221	Fabricación de productos de caucho	GRUPO	22
+8936	2211	Fabricación de cubiertas y cámaras de caucho; recauchutado y renovación de cubiertas de caucho	CLASE	221
+8937	22110	Fabricación de cubiertas y cámaras de caucho; recauchutado y renovación de cubiertas de caucho	SUBCLASE	2211
+8938	2219	Fabricación de planchas, tubos, correas, cuerdas, conectores y otros productos de caucho	CLASE	221
+8939	22190	Fabricación de planchas, tubos, correas, cuerdas, conectores y otros productos de caucho	SUBCLASE	2219
+8940	222	Fabricación de productos de plástico	GRUPO	22
+8942	22201	Fabricación de planchas, hojas, tubos y mangueras de plástico; accesorios para estos productos	SUBCLASE	2220
+8943	22202	Fabricación de envases de plástico	SUBCLASE	2220
+8944	22203	Fabricación de cubrimientos de plástico para pisos, paredes, techo y otros artículos de plástico para obras de construcción	SUBCLASE	2220
+8945	22204	Fabricación de artículos sanitarios de plástico	SUBCLASE	2220
+8946	22205	Fabricación de artículos de mesa, cocina y tocador de plástico	SUBCLASE	2220
+8947	22209	Fabricación de otros productos de plástico n.c.p.	SUBCLASE	2220
+8948	23	FABRICACIÓN DE OTROS PRODUCTOS MINERALES NO METÁLICOS	DIVISION	22209
+8949	231	Fabricación de vidrio y productos de vidrio	GRUPO	23
+8950	2310	Fabricación de vidrio y productos de vidrio	CLASE	231
+8951	23101	Fabricación de vidrio plano	SUBCLASE	2310
+8952	23102	Fabricación de envases y recipientes de vidrio	SUBCLASE	2310
+8953	23109	Fabricación de otros productos de vidrio n.c.p.	SUBCLASE	2310
+8954	239	Fabricación de productos minerales no metálicos n.c.p.	GRUPO	23
+8955	2391	Fabricación de productos refractarios	CLASE	239
+8956	23910	Fabricación de productos refractarios	SUBCLASE	2391
+8957	2392	Fabricación de materiales de construcción de arcilla	CLASE	239
+8958	23920	Fabricación de materiales de construcción de arcilla	SUBCLASE	2392
+8959	2393	Fabricación de otros productos de cerámica y porcelana	CLASE	239
+8960	23930	Fabricación de otros productos de cerámica y porcelana	SUBCLASE	2393
+8961	2394	Fabricación de cemento, cal y yeso	CLASE	239
+8962	23941	Fabricación de cemento	SUBCLASE	2394
+8963	23942	Fabricación de cal y yeso	SUBCLASE	2394
+8964	2395	Fabricación de artículos de hormigón, cemento y yeso	CLASE	239
+8965	23951	Fabricación de materiales prefabricados de hormigón, cemento o piedra artificial para obras de construcción	SUBCLASE	2395
+8966	23952	Fabricación de artículos de yeso para la construcción	SUBCLASE	2395
+8967	23959	Fabricación de otros artículos de hormigón, yeso, cemento o piedra artificial	SUBCLASE	2395
+8968	2396	Corte, tallado y acabado de la piedra	CLASE	239
+8969	23960	Corte, tallado y acabado de la piedra	SUBCLASE	2396
+8970	2399	Fabricación de otros productos minerales no metálicos n.c.p.	CLASE	239
+8971	23990	Fabricación de otros productos minerales no metálicos n.c.p.	SUBCLASE	2399
+8972	24	FABRICACIÓN DE METALES COMUNES	DIVISION	23990
+8973	241	Industrias básicas de hierro y acero	GRUPO	24
+8974	2410	Industrias básicas de hierro y acero	CLASE	241
+8975	24100	Industrias básicas de hierro y acero (Siderurgia)	SUBCLASE	2410
+8976	242	Fabricación de productos primarios de metales preciosos y metales no ferrosos	GRUPO	24
+8977	2420	Fabricación de productos primarios de metales preciosos y metales no ferrosos	CLASE	242
+8978	24201	Fabricación de productos primarios de metales no ferrosos	SUBCLASE	2420
+8979	24202	Fabricación de metales preciosos en formas primarias	SUBCLASE	2420
+8980	243	Fundición de metales	GRUPO	24
+8981	2431	Fundición de hierro y acero	CLASE	243
+8982	24310	Fundición de hierro y acero	SUBCLASE	2431
+8983	2432	Fundición de metales no ferrosos	CLASE	243
+8984	24320	Fundición de metales no ferrosos	SUBCLASE	2432
+8985	25	FABRICACIÓN DE PRODUCTOS ELABORADOS DE METAL, EXCEPTO MAQUINARIA Y EQUIPO	DIVISION	24320
+8986	251	Fabricación de productos metálicos para uso estructural, tanques, depósitos, recipientes de metal y generadores de vapor	GRUPO	25
+8987	2511	Fabricación de productos metálicos para uso estructural (construcción)	CLASE	251
+8988	25110	Fabricación de productos metálicos para uso estructural (construcción)	SUBCLASE	2511
+8989	2512	Fabricación de tanques, calderas, depósitos y recipientes de metal	CLASE	251
+8990	25120	Fabricación de tanques, calderas, depósitos y recipientes de metal	SUBCLASE	2512
+8991	2513	Fabricación de generadores de vapor, excepto calderas de agua caliente para calefacción central	CLASE	251
+8992	25130	Fabricación de generadores de vapor, excepto calderas de agua caliente para calefacción central	SUBCLASE	2513
+8993	252	Fabricación de armas y municiones	GRUPO	25
+8994	2520	Fabricación de armas y municiones	CLASE	252
+8995	25200	Fabricación de armas y municiones	SUBCLASE	2520
+8996	259	Fabricación de otros productos fabricados de metal; actividades de servicios de trabajo de metales	GRUPO	25
+8997	2591	Forja, prensado, estampado y laminado de metales; pulvimetalurgia	CLASE	259
+8998	25910	Forja, prensado, estampado y laminado de metales; pulvimetalurgia	SUBCLASE	2591
+8999	2592	Tratamiento a metales: revestimiento, torneado, soldadura, enchapado, grabado, pulido, herrería y actividades afines	CLASE	259
+9000	25920	Tratamiento a metales: revestimiento, torneado, soldadura, enchapado, grabado, pulido, herrería y  actividades afines	SUBCLASE	2592
+9001	2593	Fabricación de artículos de cuchillería, herramientas de mano y artículos de ferretería	CLASE	259
+9002	25931	Fabricación de artículos de cuchillería	SUBCLASE	2593
+9003	25932	Fabricación de herramientas de mano y artículos de ferretería	SUBCLASE	2593
+9004	25933	Fabricación de utensilios de mesa y de cocina	SUBCLASE	2593
+9005	2599	Fabricación de otros productos elaborados de metal n.c.p.	CLASE	259
+9006	25991	Fabricación de envases de productos metálicos	SUBCLASE	2599
+9007	25992	Fabricación de artículos de alambre, clavos, tornillos, arandelas, pernos y otros	SUBCLASE	2599
+9008	25993	Fabricación de artículos de metal de uso doméstico	SUBCLASE	2599
+9009	25999	Fabricación de productos metálicos n.c.p.	SUBCLASE	2599
+9010	26	FABRICACIÓN DE PRODUCTOS DE INFORMÁTICA, DE ELECTRÓNICA Y DE  ÓPTICA	DIVISION	25999
+9011	261	Fabricación de condensadores, transformadores, tableros electrónicos y circuitos integrados	GRUPO	26
+9012	2610	Fabricación de condensadores, transformadores, tableros electrónicos y circuitos integrados	CLASE	261
+9013	26100	Fabricación de condensadores, transformadores, tableros electrónicos y circuitos integrados	SUBCLASE	2610
+9014	262	Fabricación y/o ensamblado de computadoras y equipo periférico	GRUPO	26
+9015	2620	Fabricación y/o ensamblado de computadoras y equipo periférico	CLASE	262
+9016	26200	Fabricación y/o ensamblado de computadoras y equipo periférico	SUBCLASE	2620
+9017	263	Fabricación de equipo de comunicaciones	GRUPO	26
+9018	2630	Fabricación de equipo de comunicaciones	CLASE	263
+9019	26300	Fabricación de equipo de comunicaciones	SUBCLASE	2630
+9020	264	Fabricación y ensamblado de receptores de radio, televisión, aparatos de grabación y reproducción de sonido,  video y productos conexos	GRUPO	26
+9021	2640	Fabricación y ensamblado de receptores de radio, televisión, aparatos de grabación y reproducción de sonido,  video y productos conexos	CLASE	264
+9022	26400	Fabricación y ensamblado de receptores de radio, televisión, aparatos de grabación y reproducción de sonido,  video y productos conexos	SUBCLASE	2640
+9023	265	Fabricación de equipo de medición, prueba, navegación, control y de relojes	GRUPO	26
+9024	2651	Fabricación de equipo de medición, prueba, navegación y control	CLASE	265
+9025	26510	Fabricación de equipo de medición, prueba, navegación y control	SUBCLASE	2651
+9026	2652	Fabricación de relojes y sus partes	CLASE	265
+9027	26520	Fabricación de relojes y sus partes	SUBCLASE	2652
+9028	266	Fabricación de equipo médico, quirúrgico y de aparatos ortopédicos	GRUPO	26
+9029	2660	Fabricación de equipo médico, quirúrgico y de aparatos ortopédicos	CLASE	266
+9030	26600	Fabricación de equipo médico, quirúrgico y de aparatos ortopédicos	SUBCLASE	2660
+9031	267	Fabricación de instrumentos de óptica y equipo fotográfico	GRUPO	26
+9032	2670	Fabricación de instrumentos de óptica y equipo fotográfico	CLASE	267
+9033	26700	Fabricación de instrumentos de óptica y equipo fotográfico	SUBCLASE	2670
+9034	268	Fabricación de soportes magnéticos y ópticos para grabación	GRUPO	26
+9035	2680	Fabricación de soportes magnéticos y ópticos para grabación	CLASE	268
+9036	26800	Fabricación de soportes magnéticos y ópticos para grabación	SUBCLASE	2680
+9037	27	FABRICACIÓN DE MOTORES, GENERADORES Y TRANSFORMADORES ELÉCTRICOS; APARATOS DE DISTRIBUCIÓN Y CONTROL DE LA ENERGÍA ELÉCTRICA	DIVISION	26800
+9038	271	Fabricación de motores, generadores y transformadores eléctricos; aparatos de distribución y control de la energía eléctrica	GRUPO	27
+9039	2710	Fabricación de motores, generadores y transformadores eléctricos; aparatos de distribución y control de la energía eléctrica	CLASE	271
+9040	27100	Fabricación de motores, generadores y transformadores eléctricos; aparatos de distribución y control de la energía eléctrica	SUBCLASE	2710
+9041	272	Fabricación de acumuladores, pilas y baterías y acumuladores	GRUPO	27
+9042	2720	Fabricación de acumuladores, pilas y baterías y acumuladores	CLASE	272
+9043	27200	Fabricación de acumuladores, pilas y baterías y acumuladores	SUBCLASE	2720
+9044	273	Fabricación de cables y dispositivos de cableado	GRUPO	27
+9045	2731	Fabricación de cables de fibra óptica	CLASE	273
+9046	27310	Fabricación de cables de fibra óptica	SUBCLASE	2731
+9047	2732	Fabricación de otros cables e hilos eléctricos	CLASE	273
+9048	27320	Fabricación de otros cables e hilos eléctricos	SUBCLASE	2732
+9049	2733	Fabricación de dispositivos de cableado	CLASE	273
+9050	27330	Fabricación de dispositivos de cableado	SUBCLASE	2733
+9051	274	Fabricación de equipo eléctrico de iluminación	GRUPO	27
+9052	2740	Fabricación de equipo eléctrico de iluminación	CLASE	274
+9053	27401	Fabricación de lámparas en general y sus partes	SUBCLASE	2740
+9054	27402	Fabricación de carteles y letreros luminosos	SUBCLASE	2740
+9055	27409	Fabricación de otro equipo de iluminación n.c.p.	SUBCLASE	2740
+9056	275	Fabricación de aparatos de uso doméstico	GRUPO	27
+9057	2750	Fabricación de aparatos de uso doméstico	CLASE	275
+9058	27500	Fabricación de aparatos de uso doméstico	SUBCLASE	2750
+9059	279	Fabricación de otros tipos de equipo eléctrico	GRUPO	27
+9060	2790	Fabricación de otros tipos de equipo eléctrico	CLASE	279
+9061	27900	Fabricación de otros tipos de equipo eléctrico	SUBCLASE	2790
+9062	28	FABRICACIÓN DE MAQUINARIA Y EQUIPO N.C.P	DIVISION	27900
+9063	281	Fabricación de maquinaria de uso general	GRUPO	28
+9064	2811	Fabricación de motores y turbinas, excepto motores para aeronaves, vehículos automotores y motocicletas	CLASE	281
+9065	28110	Fabricación de motores y turbinas, excepto motores para aeronaves, vehículos automotores y motocicletas	SUBCLASE	2811
+9066	2812	Fabricación de equipo de propulsión de fluidos	CLASE	281
+9067	28120	Fabricación de equipo de propulsión de fluidos	SUBCLASE	2812
+9068	2813	Fabricación de bombas de aire y líquido, compresores, grifos y válvulas	CLASE	281
+9069	28130	Fabricación de bombas de aire y líquido, compresores, grifos y válvulas	SUBCLASE	2813
+9070	2814	Fabricación de cojinetes, engranajes, trenes de engranajes y piezas de transmisión	CLASE	281
+9268	43314	Pintura de interior y exteriores de edificaciones	SUBCLASE	4331
+9071	28140	Fabricación de cojinetes, engranajes, trenes de engranajes y piezas de transmisión	SUBCLASE	2814
+9072	2815	Fabricación de hornos, hogares y quemadores	CLASE	281
+9073	28150	Fabricación de hornos, hogares y quemadores	SUBCLASE	2815
+9074	2816	Fabricación de equipo de elevación y manipulación	CLASE	281
+9075	28160	Fabricación de equipo de elevación y manipulación	SUBCLASE	2816
+9076	2817	Fabricación de maquinaria y equipo de oficina	CLASE	281
+9077	28170	Fabricación de maquinaria y equipo de oficina	SUBCLASE	2817
+9078	2818	Fabricación de herramientas de mano motorizadas	CLASE	281
+9079	28180	Fabricación de herramientas de mano motorizadas	SUBCLASE	2818
+9080	2819	Fabricación de otros tipos de maquinaria de uso general	CLASE	281
+9081	28190	Fabricación de otros tipos de maquinaria de uso general	SUBCLASE	2819
+9082	282	Fabricación de maquinaria de uso especializado	GRUPO	28
+9083	2821	Fabricación de maquinaria agropecuaria y forestal	CLASE	282
+9084	28210	Fabricación de maquinaria agropecuaria y forestal	SUBCLASE	2821
+9085	2822	Fabricación de maquinaria para la conformación de metales, de máquinas herramienta y sus partes y piezas	CLASE	282
+9086	28220	Fabricación de maquinaria para la conformación de metales, de máquinas herramienta y sus partes y piezas	SUBCLASE	2822
+9087	2823	Fabricación de maquinaria metalúrgica	CLASE	282
+9088	28230	Fabricación de maquinaria metalúrgica	SUBCLASE	2823
+9089	2824	Fabricación de maquinaria para la explotación de minas, canteras y obras de construcción	CLASE	282
+9090	28240	Fabricación de maquinaria para la explotación de minas, canteras y obras de construcción	SUBCLASE	2824
+9091	2825	Fabricación de maquinaria para la elaboración de alimentos, bebidas y tabaco	CLASE	282
+9092	28250	Fabricación de maquinaria para la elaboración de alimentos, bebidas y tabaco	SUBCLASE	2825
+9093	2826	Fabricación de maquinaria para la elaboración de productos textiles, prendas de vestir y cueros	CLASE	282
+9094	28260	Fabricación de maquinaria para la elaboración de productos textiles, prendas de vestir y cueros	SUBCLASE	2826
+9095	2829	Fabricación de otra maquinaria de uso especial	CLASE	282
+9096	28290	Fabricación de otra maquinaria de uso especial	SUBCLASE	2829
+9097	29	FABRICACIÓN DE VEHÍCULOS AUTOMOTORES, REMOLQUES Y SEMIREMOLQUES	DIVISION	28290
+9098	291	Fabricación de vehículos automotores	GRUPO	29
+9099	2910	Fabricación de vehículos automotores	CLASE	291
+9100	29100	Fabricación y ensamblado  de vehículos automotores	SUBCLASE	2910
+9101	292	Fabricación de carrocerías, cabinas para vehículos automotores; fabricación de remolques y semirremolques	GRUPO	29
+9102	2920	Fabricación de carrocerías, cabinas para vehículos automotores; fabricación de remolques y semirremolques	CLASE	292
+9103	29200	Fabricación de carrocerías, cabinas para vehículos automotores; fabricación de remolques y semirremolques	SUBCLASE	2920
+9104	293	Fabricación de partes, piezas y accesorios para vehículos automotores	GRUPO	29
+9105	2930	Fabricación de partes, piezas y accesorios para vehículos automotores	CLASE	293
+9106	29300	Fabricación de partes, piezas y accesorios para vehículos automotores	SUBCLASE	2930
+9107	30	FABRICACIÓN DE OTROS TIPOS DE EQUIPO DE TRANSPORTE	DIVISION	29300
+9108	301	Construcción de embarcaciones y estructuras flotantes	GRUPO	30
+9109	3011	Construcción de embarcaciones y estructuras flotantes	CLASE	301
+9110	30110	Construcción de embarcaciones y estructuras flotantes	SUBCLASE	3011
+9111	3012	Construcción de embarcaciones de recreo y deporte	CLASE	301
+9112	30120	Construcción de embarcaciones de recreo y deporte	SUBCLASE	3012
+9113	302	Fabricación de locomotoras y de material rodante para ferrocarriles y tranvías	GRUPO	30
+9114	3020	Fabricación de locomotoras y material rodante	CLASE	302
+9115	30200	Fabricación de locomotoras y material rodante	SUBCLASE	3020
+9116	303	Fabricación de aeronaves, naves espaciales y maquinaria conexa	GRUPO	30
+9117	3030	Fabricación de aeronaves, naves espaciales y maquinaria conexa	CLASE	303
+9118	30300	Fabricación de aeronaves, naves espaciales y maquinaria conexa	SUBCLASE	3030
+9119	304	Fabricación de vehículos militares de combate	GRUPO	30
+9120	3040	Fabricación de vehículos militares de combate	CLASE	304
+9121	30400	Fabricación de vehículos militares de combate	SUBCLASE	3040
+9122	309	Fabricación de equipo de transporte n.c.p.	GRUPO	30
+9123	3091	Fabricación de motocicletas, partes, piezas y accesorios	CLASE	309
+9124	30910	Fabricación de motocicletas, partes, piezas y accesorios	SUBCLASE	3091
+9125	3092	Fabricación de bicicletas y de sillones de ruedas para inválidos	CLASE	309
+9126	30920	Fabricación de bicicletas y de sillones de ruedas para inválidos	SUBCLASE	3092
+9127	3099	Fabricación de otros tipos de equipo de transporte	CLASE	309
+9128	30990	Fabricación de otros tipos de equipo de transporte	SUBCLASE	3099
+9129	31	FABRICACIÓN DE MUEBLES	DIVISION	30990
+9130	310	Fabricación de muebles	GRUPO	31
+9131	3100	Fabricación de muebles y colchones	CLASE	310
+9132	31001	Fabricación de muebles y partes de muebles, principalmente de madera	SUBCLASE	3100
+9133	31002	Fabricación de muebles y partes de muebles, principalmente de metal	SUBCLASE	3100
+9134	31003	Fabricación de muebles de otros materiales, excepto los de piedra, hormigón y cerámica	SUBCLASE	3100
+9135	31004	Fabricación de somieres y colchones	SUBCLASE	3100
+9136	32	OTRAS INDUSTRIAS MANUFACTURERAS n.c.p.	DIVISION	31004
+9137	321	Fabricación de joyas, bisutería y artículos conexos	GRUPO	32
+9138	3211	Fabricación de joyas y artículos conexos	CLASE	321
+9139	32110	Fabricación de joyas de metales preciosos	SUBCLASE	3211
+9140	3212	Fabricación de artículos de bisutería	CLASE	321
+9141	32120	Fabricación de artículos de bisutería	SUBCLASE	3212
+9142	3213	Fabricación de artículos de orfebrería	CLASE	321
+9143	32130	Fabricación de artículos de orfebrería	SUBCLASE	3213
+9144	322	Fabricación de instrumentos de música	GRUPO	32
+9145	3220	Fabricación de instrumentos de música	CLASE	322
+9146	32201	Fabricación de instrumentos de música de viento	SUBCLASE	3220
+9147	32202	Fabricación de instrumentos de música de cuerda	SUBCLASE	3220
+9148	32203	Fabricación de instrumentos de música de percusión	SUBCLASE	3220
+9149	32209	Fabricación de otros instrumentos de música n.c.p.	SUBCLASE	3220
+9150	323	Fabricación de artículos de deporte	GRUPO	32
+9151	3230	Fabricación de artículos de deporte	CLASE	323
+9152	32300	Fabricación de artículos de deporte	SUBCLASE	3230
+9153	324	Fabricación de juegos y juguetes	GRUPO	32
+9154	3240	Fabricación de juegos y juguetes	CLASE	324
+9155	32400	Fabricación de juegos y juguetes	SUBCLASE	3240
+9156	325	Fabricación de instrumentos y materiales médicos y odontológicos	GRUPO	32
+9157	3250	Fabricación de instrumentos y materiales médicos y odontológicos	CLASE	325
+9158	32500	Fabricación de instrumentos y materiales médicos y odontológicos	SUBCLASE	3250
+9159	329	Otras industrias manufactureras n.c.p.	GRUPO	32
+9160	3290	Otras industrias manufactureras n.c.p.	CLASE	329
+9161	32901	Fabricación de bolígrafos, lápices, cintas  para máquinas de escribir y pizarras	SUBCLASE	3290
+9162	32902	Fabricación de sombrillas, bastones y sus accesorios	SUBCLASE	3290
+9163	32903	Fabricación de sellos	SUBCLASE	3290
+9164	32904	Fabricación escobas, pinceles y rodillos para pintura	SUBCLASE	3290
+9165	32905	Fabricación de velas, cirios y artículos similares	SUBCLASE	3290
+9166	32906	Fabricación de ataúdes	SUBCLASE	3290
+9167	32909	Otras industrias manufactureras n.c.p.	SUBCLASE	3290
+9168	33	REPARACIÓN E INSTALACIÓN DE MAQUINARIA Y EQUIPO	DIVISION	32909
+9169	331	Reparación de productos elaborados de metal, maquinaria y equipo	GRUPO	33
+9170	3311	Reparación y mantenimiento de productos elaborados de metal	CLASE	331
+9171	33110	Reparación y mantenimiento de productos elaborados de metal	SUBCLASE	3311
+9172	3312	Reparación de maquinaria	CLASE	331
+9173	33121	Reparación y mantenimiento de maquinaria industrial	SUBCLASE	3312
+9174	33122	Reparación y mantenimiento de maquinaria de uso agropecuario y forestal	SUBCLASE	3312
+9175	33123	Reparación y mantenimiento de maquinaria de uso en minas, yacimientos, canteras y procesamiento de metales	SUBCLASE	3312
+9176	33124	Reparación y mantenimiento de maquinaria de construcción	SUBCLASE	3312
+9177	33125	Reparación y mantenimiento de maquinaria de uso para la actividad comercial	SUBCLASE	3312
+9178	33129	Reparación y mantenimiento de otras maquinarias n.c.p.	SUBCLASE	3312
+9179	3313	Reparación de equipo electrónico y óptico	CLASE	331
+9180	33130	Reparación de equipo electrónico y óptico	SUBCLASE	3313
+9181	3314	Reparación de equipo eléctrico	CLASE	331
+9182	33140	Reparación de equipo eléctrico	SUBCLASE	3314
+9183	3315	Reparación de equipo de transporte, excepto vehículos automotores	CLASE	331
+9184	33150	Reparación de equipo de transporte, excepto vehículos automotores	SUBCLASE	3315
+9185	3316	Reparación de máquinas de oficina	CLASE	331
+9186	33160	Reparación de máquinas de oficina	SUBCLASE	3316
+9187	3319	Reparación de otros tipos de equipo	CLASE	331
+9188	33190	Reparación de otros tipos de equipo	SUBCLASE	3319
+9189	332	Instalación de maquinaria y equipo industrial	GRUPO	33
+9190	3320	Instalación de maquinaria y equipo industrial	CLASE	332
+9191	33200	Instalación de maquinaria y equipo industrial	SUBCLASE	3320
+9192	D	SUMINISTRO DE ELECTRICIDAD, GAS, VAPOR Y AIRE ACONDICIONADO	SECCION	\N
+9193	35	SUMINISTRO DE ELECTRICIDAD, GAS, VAPOR Y AGUA CALIENTE	DIVISION	D
+9194	351	Generación, transmisión y distribución de energía eléctrica	GRUPO	35
+9195	3510	Generación, transmisión y distribución de energía eléctrica	CLASE	351
+9196	35101	Generación de energía eléctrica	SUBCLASE	3510
+9197	35102	Transmisión de energía eléctrica	SUBCLASE	3510
+9198	35103	Distribución de energía eléctrica	SUBCLASE	3510
+9199	352	Fabricación de gas; distribución de combustibles gaseosos	GRUPO	35
+9200	3520	Fabricación de gas; distribución de combustibles gaseosos	CLASE	352
+9201	35201	Fabricación de combustibles gaseosos	SUBCLASE	3520
+9841	731	Publicidad	GRUPO	73
+9202	35202	Suministro y distribución de combustibles gaseosos por tuberías	SUBCLASE	3520
+9203	35203	Suministro y distribución de combustibles gaseosos por otros medios	SUBCLASE	3520
+9204	353	Suministro de vapor, aire acondicionado, agua caliente y producción de hielo	GRUPO	35
+9205	3530	Suministro de vapor, aire acondicionado, agua caliente y producción de hielo	CLASE	353
+9206	35300	Suministro de vapor, aire acondicionado, agua caliente y producción de hielo	SUBCLASE	3530
+9207	E	SUMINISTRO DE AGUA; EVACUACIÓN DE AGUAS RESIDUALES, GESTIÓN DE DESECHOS Y DESCONTAMINACIÓN	SECCION	\N
+9208	36	CAPTACIÓN, TRATAMIENTO Y DISTRIBUCIÓN DE AGUA	DIVISION	E
+9209	360	Captación, tratamiento y distribución de agua	GRUPO	36
+9210	3600	Captación, tratamiento y distribución de agua	CLASE	360
+9211	36000	Captación, tratamiento y distribución de agua	SUBCLASE	3600
+9212	37	EVACUACIÓN DE AGUAS SERVIDAS, LIMPIEZA DE CLOACAS Y ALCANTARILLAS	DIVISION	36000
+9213	370	Evacuación de aguas servidas, limpieza de cloacas y alcantarillas	GRUPO	37
+9214	3700	Evacuación de aguas servidas, limpieza de cloacas y alcantarillas	CLASE	370
+9215	37000	Evacuación de aguas servidas, limpieza de cloacas y alcantarillas	SUBCLASE	3700
+9216	38	RECOGIDA, TRATAMIENTO Y ELIMINACIÓN DE DESECHOS; RECUPERACIÓN DE MATERIALES	DIVISION	37000
+9217	381	Servicio de recogida de desechos	GRUPO	38
+9218	3811	Servicio de recogida de desechos no peligrosos	CLASE	381
+9219	38110	Servicio de recogida de desechos no peligrosos	SUBCLASE	3811
+9220	3812	Recogida de desechos peligrosos	CLASE	381
+9221	38120	Recogida de desechos peligrosos	SUBCLASE	3812
+9222	382	Tratamiento y eliminación de desechos	GRUPO	38
+9223	3821	Tratamiento y eliminación de desechos no peligrosos	CLASE	382
+9224	38210	Tratamiento y eliminación de desechos no peligrosos	SUBCLASE	3821
+9225	3822	Tratamiento y eliminación de desechos peligrosos	CLASE	382
+9226	38220	Tratamiento y eliminación de desechos peligrosos	SUBCLASE	3822
+9227	383	Recuperación de desechos metálicos y no metálicos	GRUPO	38
+9228	3830	Recuperación de desechos metálicos y no metálicos	CLASE	383
+9229	38300	Recuperación de desechos metálicos y no metálicos	SUBCLASE	3830
+9230	39	SERVICIOS DE DESCONTAMINACIÓN Y OTROS SERVICIOS DE GESTIÓN DE DESECHOS	DIVISION	38300
+9231	390	Servicios de descontaminación y otros servicios de gestión de desechos	GRUPO	39
+9232	3900	Servicios de descontaminación y otros servicios de gestión de desechos	CLASE	390
+9233	39000	Servicios de descontaminación y otros servicios de gestión de desechos	SUBCLASE	3900
+9234	F	CONSTRUCCIÓN	SECCION	\N
+9235	41	CONSTRUCCIÓN DE EDIFICIOS	DIVISION	F
+9236	410	Construcción de edificaciones	GRUPO	41
+9237	4100	Construcción de edificaciones	CLASE	410
+9238	41000	Construcción de edificaciones	SUBCLASE	4100
+9239	42	CONSTRUCCIÓN DE OBRAS DE INGENIERÍA CIVIL	DIVISION	41000
+9240	421	Construcción de obras de ingeniería civil	GRUPO	42
+9241	4210	Construcción de obras de ingeniería civil	CLASE	421
+9242	42101	Construcción de obras de ingeniería civil	SUBCLASE	4210
+9243	42102	Mantenimiento y reparación de carreteras	SUBCLASE	4210
+9244	422	Construcción de obras de servicio público	GRUPO	42
+9245	4220	Construcción de obras de servicio público	CLASE	422
+9246	42200	Construcción de obras de servicio público	SUBCLASE	4220
+9247	429	Construcción de otras obras de ingeniería civil	GRUPO	42
+9248	4290	Construcción de otras obras de ingeniería civil	CLASE	429
+9249	42900	Construcción de otras obras de ingeniería civil	SUBCLASE	4290
+9250	43	ACTIVIDADES ESPECIALIZADAS DE CONSTRUCCIÓN	DIVISION	42900
+9251	431	Demolición y derribo de edificios y otras estructuras	GRUPO	43
+9252	4311	Demolición y derribo de edificios y otras estructuras	CLASE	431
+9253	43110	Demolición y derribo de edificios y otras estructuras	SUBCLASE	4311
+9254	4312	Preparación de terreno, para obras posteriores de actividades de construcción	CLASE	431
+9255	43120	Preparación de terreno,para obras posteriores de actividades de construcción	SUBCLASE	4312
+9256	432	Instalaciones eléctricas, de fontanería y otras instalaciones para obras de construcción	GRUPO	43
+9257	4321	Instalación de sistemas eléctricos en edificaciones y estructuras de ingeniería civil	CLASE	432
+9320	46307	Venta por mayor de bebidas, cigarrillos y tabaco	SUBCLASE	4630
+9258	43210	Instalación de sistemas eléctricos en edificaciones y estructuras de ingeniería civil	SUBCLASE	4321
+9259	4322	Instalaciones de fontanería, calefacción y aire acondicionado	CLASE	432
+9260	43220	Instalaciones de fontanería, calefacción y aire acondicionado	SUBCLASE	4322
+9261	4329	Otras instalaciones para obras de construcción	CLASE	432
+9262	43290	Otras instalaciones para obras de construcción	SUBCLASE	4329
+9263	433	Terminación y acabado de edificios	GRUPO	43
+9264	4331	Terminación de edificios y obras de ingeniería civil	CLASE	433
+9265	43311	Revestimiento de yeso de interiores y exteriores	SUBCLASE	4331
+9266	43312	Instalaciones de productos de carpintería	SUBCLASE	4331
+9267	43313	Colocación de pisos de madera, cerámica y otros revestimientos para paredes y pisos	SUBCLASE	4331
+9269	43315	Instalación de vidrios en obras de construcción	SUBCLASE	4331
+9270	43319	Otros trabajos de terminación de edificios y obras de ingeniería civil n.c.p.	SUBCLASE	4331
+9271	439	Otras actividades especializadas de construcción	GRUPO	43
+9272	4390	Otras actividades especializadas de construcción	CLASE	439
+9273	43900	Otras actividades especializadas de construcción	SUBCLASE	4390
+9274	G	VENTA POR MAYOR Y POR MENOR; REPARACIÓN DE VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS	SECCION	\N
+9275	45	VENTA POR MAYOR Y POR MENOR; REPARACIÓN DE VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS	DIVISION	G
+9276	451	Venta de vehículos automotores	GRUPO	45
+9277	4510	Venta de vehículos automotores	CLASE	451
+9278	45101	Venta de vehículos automotores nuevos	SUBCLASE	4510
+9279	45102	Venta de vehículos automotores usados	SUBCLASE	4510
+9280	452	Mantenimiento y reparación de vehículos automotores	GRUPO	45
+9281	4520	Mantenimiento y reparación de vehículos automotores	CLASE	452
+9282	45201	Mantenimiento y reparación integral de vehículos	SUBCLASE	4520
+9283	45202	Lavado de automotores automático y manual	SUBCLASE	4520
+9284	45203	Mantenimiento de neumáticos	SUBCLASE	4520
+9285	45204	Pintura de vehículos automotores	SUBCLASE	4520
+9286	45205	Tapicería de vehículos automotores	SUBCLASE	4520
+9287	45209	Mantenimiento y reparación de vehículos n.c.p.	SUBCLASE	4520
+9288	453	Venta de partes, piezas y accesorios para vehículos automotores	GRUPO	45
+9289	4530	Venta de partes, piezas y accesorios para vehículos automotores	CLASE	453
+9290	45300	Venta de partes, piezas y accesorios para vehículos automotores	SUBCLASE	4530
+9291	454	Venta, mantenimiento y reparación de motocicletas y de sus partes, piezas y accesorios	GRUPO	45
+9292	4540	Venta, mantenimiento y reparación de motocicletas y de sus partes, piezas y accesorios	CLASE	454
+9293	45401	Venta de motocicletas y de sus partes, piezas y accesorios	SUBCLASE	4540
+9294	45402	Mantenimiento y reparación de motocicletas	SUBCLASE	4540
+9295	46	VENTA POR MAYOR, EXCEPTO EL DE VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS	DIVISION	45402
+9296	461	Venta por mayor a cambio de una retribución o por contrato	GRUPO	46
+9297	4610	Venta por mayor a cambio de una retribución o por contrato	CLASE	461
+9298	46101	Venta por mayor a cambio de una retribución o por contrato de productos agrícolas y pecuarios	SUBCLASE	4610
+9299	46102	Venta por mayor a cambio de una retribución o por contrato de minerales, productos químicos y farmacéuticos	SUBCLASE	4610
+9300	46103	Venta por mayor a cambio de una retribución o por contrato de alimentos, bebidas y tabaco	SUBCLASE	4610
+9301	46104	Venta por mayor a cambio de una retribución o por contrato de productos textiles, prendas de vestir, calzado, excepto el ortopédico, artículos de marroquinería y productos de cuero n.c.p.	SUBCLASE	4610
+9302	46105	Venta por mayor a cambio de una retribución o por contrato de madera y materiales de construcción	SUBCLASE	4610
+9303	46106	Venta por mayor a cambio de una retribución o por contrato de maquinaria industrial y equipo de oficina	SUBCLASE	4610
+9304	46107	Venta por mayor a cambio de una retribución o por contrato de papel, cartón, libros, revistas, diarios, materiales de embalaje y artículos de librería	SUBCLASE	4610
+9305	46109	Venta por mayor a cambio de una retribución o por contrato de mercaderías n.c.p.	SUBCLASE	4610
+9306	462	Venta por mayor de materias primas agropecuarias y animales vivos	GRUPO	46
+9307	4620	Venta por mayor de materias primas agropecuarias y de animales vivos	CLASE	462
+9308	46201	Venta por mayor de materias primas agrícolas y de la silvicultura	SUBCLASE	4620
+9309	46202	Venta por mayor de animales vivos	SUBCLASE	4620
+9310	46203	Venta por mayor de cueros, pieles y lana en bruto	SUBCLASE	4620
+9311	46204	Venta por mayor de residuos y subproductos agropecuarios	SUBCLASE	4620
+9312	463	Venta por mayor de alimentos, bebidas y tabaco	GRUPO	46
+9313	4630	Venta por mayor de alimentos, bebidas y tabaco	CLASE	463
+9314	46301	Venta por mayor de frutas, tubérculos y hortalizas	SUBCLASE	4630
+9315	46302	Venta por mayor de productos lácteos	SUBCLASE	4630
+9316	46303	Venta por mayor de huevos, aceites y grasas comestibles	SUBCLASE	4630
+9317	46304	Venta por mayor de carne en general y productos cárnicos	SUBCLASE	4630
+9318	46305	Venta por mayor de productos de panadería, pastelería y pastas frescas	SUBCLASE	4630
+9319	46306	Venta por mayor de café, té, cacao y especias	SUBCLASE	4630
+9321	46308	Venta por mayor de azúcar, dulces, chocolates, golosinas y otros	SUBCLASE	4630
+9322	46309	Venta por mayor de otros productos alimenticios n.c.p.	SUBCLASE	4630
+9323	464	Venta por mayor de enseres domésticos	GRUPO	46
+9324	4641	Venta por mayor de productos textiles, prendas de vestir y calzado	CLASE	464
+9325	46411	Venta por mayor de hilados de lana y algodón	SUBCLASE	4641
+9326	46412	Venta por mayor de telas	SUBCLASE	4641
+9327	46413	Venta por mayor de confecciones para el hogar	SUBCLASE	4641
+9328	46414	Venta por mayor de prendas y accesorios de vestir	SUBCLASE	4641
+9329	46415	Venta por mayor de calzado (excepto el ortopédico)	SUBCLASE	4641
+9842	7310	Publicidad	CLASE	731
+9330	46416	Venta por mayor de partes, piezas y accesorios para el calzado	SUBCLASE	4641
+9331	46417	Venta por mayor de artículos de talabartería	SUBCLASE	4641
+9332	46418	Venta por mayor de artículos de mercería	SUBCLASE	4641
+9333	46419	Venta por mayor de otros productos textiles, cuero y piel en tiendas especializadas n.c.p.	SUBCLASE	4641
+9334	4642	Venta por mayor de libros, revistas, periódicos, papel, cartón, materiales de embalaje y artículos de librería	CLASE	464
+9335	46421	Venta por mayor de libros y revistas	SUBCLASE	4642
+9336	46422	Venta por mayor de periódicos	SUBCLASE	4642
+9337	46423	Venta por mayor de papel, cartón, materiales de embalaje y artículos de librería	SUBCLASE	4642
+9338	4643	Venta por mayor de artículos y equipos de uso doméstico	CLASE	464
+9339	46431	Venta por mayor de muebles, artículos de mimbre y corcho; colchones y somieres	SUBCLASE	4643
+9340	46432	Venta por mayor de artículos de iluminación	SUBCLASE	4643
+9341	46433	Venta por mayor de artículos de bazar y menaje de cocina	SUBCLASE	4643
+9342	46434	Venta por mayor de artefactos para el hogar, eléctricos, a gas y otros combustibles	SUBCLASE	4643
+9343	46435	Venta por mayor de instrumentos musicales	SUBCLASE	4643
+9344	46436	Venta por mayor de aparatos de radió, televisión, CD, DVD grabadas y otro equipo de video y audio	SUBCLASE	4643
+9345	46439	Venta por mayor de otros artículos para el hogar n.c.p.	SUBCLASE	4643
+9346	4644	Venta por mayor de productos farmacéuticos, perfumería, instrumental médico y artículos ortopédicos	CLASE	464
+9347	46441	Venta por mayor de productos farmacéuticos medicinales	SUBCLASE	4644
+9348	46442	Venta por mayor de productos de perfumería y de belleza	SUBCLASE	4644
+9349	46443	Venta por mayor de instrumental médico, odontológico y artículos ortopédicos	SUBCLASE	4644
+9350	46444	Venta por mayor de productos veterinarios	SUBCLASE	4644
+9351	4645	Venta por mayor de artículos de óptica, fotografía, relojería y joyería	CLASE	464
+9352	46451	Venta por mayor de artículos de óptica	SUBCLASE	4645
+9353	46452	Venta por mayor de artículos de fotografía	SUBCLASE	4645
+9354	46453	Venta por mayor de artículos de relojería	SUBCLASE	4645
+9355	46454	Venta por mayor de artículos de joyería y bisutería	SUBCLASE	4645
+9356	4649	Venta por mayor de otros enseres domésticos	CLASE	464
+9357	46491	Venta por mayor de materiales y productos de limpieza	SUBCLASE	4649
+9358	46492	Venta por mayor de juegos, juguetes y artículos de cotillón	SUBCLASE	4649
+9359	46493	Venta por mayor de artículos de esparcimiento y deportes	SUBCLASE	4649
+9360	46494	Venta por mayor de bicicletas y rodados similares	SUBCLASE	4649
+9361	46495	Venta por mayor de revestimientos de pared, pisos y artículos similares para la decoración	SUBCLASE	4649
+9362	46496	Venta por mayor de artesanías	SUBCLASE	4649
+9363	46499	Venta al por mayor de otros enseres domésticos n.c.p.	SUBCLASE	4649
+9364	465	Venta por mayor de maquinaria, equipo y materiales	GRUPO	46
+9365	4651	Venta por mayor de computadoras, accesorios y programas informáticos	CLASE	465
+9366	46511	Venta por mayor de computadoras, accesorios, partes y piezas	SUBCLASE	4651
+9367	46512	Venta por mayor de programas informáticos	SUBCLASE	4651
+9368	4652	Venta por mayor de equipos electrónicos, de comunicaciones y sus partes	CLASE	465
+9369	46521	Venta por mayor de equipos electrónicos, partes y piezas	SUBCLASE	4652
+9370	46522	Venta por mayor de equipo telefónico y de comunicaciones	SUBCLASE	4652
+9371	46523	Venta al por mayor de máquinas y equipos de control y seguridad	SUBCLASE	4652
+9372	4653	Venta por mayor de maquinaria, equipo y materiales agropecuarios	CLASE	465
+9373	46530	Venta por mayor de maquinaria, equipo y materiales agropecuarios	SUBCLASE	4653
+9374	4659	Venta por mayor de otros tipos de maquinaria y equipo	CLASE	465
+9375	46591	Venta por mayor de muebles y equipo de oficina	SUBCLASE	4659
+9376	46592	Venta por mayor de maquinaria y equipo de la industria manufacturera	SUBCLASE	4659
+9377	46593	Venta por mayor de maquinaria, equipo de minería y construcción	SUBCLASE	4659
+9378	46599	Venta por mayor de otros tipos de maquinaria, equipo y materiales n.c.p.	SUBCLASE	4659
+9379	466	Otras actividades de venta al por mayor especializada	GRUPO	46
+9380	4661	Venta por mayor de combustibles sólidos, líquidos, gaseosos y productos conexos	CLASE	466
+9381	46611	Venta por mayor de gas licuado, diesel, gasolina y queroseno	SUBCLASE	4661
+9382	46612	Venta por mayor de aceites y grasas lubricantes	SUBCLASE	4661
+9383	46613	Venta por mayor de carbón vegetal, leña y otros combustibles sólidos	SUBCLASE	4661
+9384	4662	Venta por mayor de metales y minerales metalíferos	CLASE	466
+9385	46621	Venta por mayor de metales, minerales y productos semiacabados ferrosos y no ferrosos	SUBCLASE	4662
+9386	46622	Venta por mayor de oro y otros metales preciosos	SUBCLASE	4662
+9387	4663	Venta por mayor de materiales de construcción, artículos de ferretería, materiales de fontanería, calefacción, y productos de vidrio	CLASE	466
+9388	46631	Venta por mayor de materiales de construcción	SUBCLASE	4663
+9389	46632	Venta por mayor de artículos sanitarios	SUBCLASE	4663
+9390	46633	Venta por mayor de artículos prefabricados de cemento	SUBCLASE	4663
+9391	46634	Venta al por mayor de materiales de construcción de acero y aluminio	SUBCLASE	4663
+9392	46635	Venta por mayor de madera sin desbastar, puertas, ventanas, marcos y productos primarios	SUBCLASE	4663
+9393	46636	Venta por mayor de artículos de ferretería, fontanería y calefacción	SUBCLASE	4663
+9394	46637	Venta por mayor de pintura, barnices y productos conexos	SUBCLASE	4663
+9395	46638	Venta por mayor de vidrio, espejos y sus productos	SUBCLASE	4663
+9396	46639	Venta por mayor de otros materiales de construcción n.c.p.	SUBCLASE	4663
+9397	4669	Venta por mayor de sustancias químicas de uso industrial, desechos, chatarra y otros productos n.c.p.	CLASE	466
+9398	46691	Venta por mayor de sustancias químicas de uso industrial: tinta, colorantes, anilina y similares	SUBCLASE	4669
+9399	46692	Venta por mayor de abonos y productos químicos de uso agrícola	SUBCLASE	4669
+9400	46693	Venta por mayor de fibras textiles sintéticas	SUBCLASE	4669
+9401	46694	Venta por mayor de materiales plásticos y caucho	SUBCLASE	4669
+9402	46695	Venta por mayor de papel a granel	SUBCLASE	4669
+9403	46696	Venta por mayor de desperdicios y desechos metálicos	SUBCLASE	4669
+9404	46697	Venta por mayor de desperdicios y desechos no metálicos	SUBCLASE	4669
+9405	46699	Venta al por mayor de otros productos en tiendas especializadas n.c.p.	SUBCLASE	4669
+9406	469	Venta al por mayor de diversos productos sin especialización	GRUPO	46
+9407	4690	Venta al por mayor de diversos productos sin especialización	CLASE	469
+9408	46900	Venta por mayor de diversos productos sin especialización	SUBCLASE	4690
+9409	47	VENTA POR MENOR, EXCEPTO EL DE VEHÍCULOS AUTOMOTORES  Y MOTOCICLETAS	DIVISION	46900
+9410	471	Venta por menor en locales no especializados	GRUPO	47
+9411	4711	Venta por menor en supermercados, almacenes y tiendas de barrio no especializados con predominio de alimentos, bebidas y tabaco	CLASE	471
+9412	47111	Venta por menor en supermercados con surtido compuesto principalmente de alimentos, bebidas y tabaco	SUBCLASE	4711
+9413	47112	Venta por menor en almacenes con surtido compuesto principalmente de alimentos, bebidas y tabaco	SUBCLASE	4711
+9414	47113	Venta por menor en tiendas de barrio con surtido compuesto principalmente de alimentos, bebidas y tabaco	SUBCLASE	4711
+9415	4719	Venta al por menor en locales no especializados sin predominio de alimentos	CLASE	471
+9416	47190	Venta al por menor en locales no especializados sin predominio de alimentos	SUBCLASE	4719
+9417	472	Venta por menor de alimentos, bebidas y tabaco en tiendas especializadas	GRUPO	47
+9418	4721	Venta por menor de alimentos en tiendas especializadas	CLASE	472
+9419	47211	Venta por menor de frutas, hortalizas y tubérculos	SUBCLASE	4721
+9420	47212	Venta por menor de productos lácteos	SUBCLASE	4721
+9421	47213	Venta por menor de huevos, aceites y grasas comestibles	SUBCLASE	4721
+9422	47214	Venta por menor de carnes, embutidos y otros productos cárnicos	SUBCLASE	4721
+9423	47215	Venta por menor de productos de panadería, pastelería y pastas frescas	SUBCLASE	4721
+9424	47216	Venta por menor de café, té, cacao y especias	SUBCLASE	4721
+9425	47217	Venta por menor de azúcar, dulces, chocolates y otros productos de confitería	SUBCLASE	4721
+9426	47219	Venta por menor de otros productos alimenticios en tiendas especializadas n.c.p.	SUBCLASE	4721
+9427	4722	Venta por menor de bebidas y tabaco en tiendas especializadas	CLASE	472
+9428	47221	Venta por menor de bebidas alcohólicas en tienda	SUBCLASE	4722
+9429	47222	Venta por menor de tabaco en tienda	SUBCLASE	4722
+9430	47223	Venta por menor de bebidas no alcohólicas en tienda	SUBCLASE	4722
+9431	473	Venta al por menor de combustible  para vehículos automotores en comercios especializados	GRUPO	47
+9432	4730	Venta al por menor de combustible y lubricantes para vehículos automotores en comercios especializados	CLASE	473
+9433	47301	Venta al por menor de combustible para vehículos automotores en comercios especializados	SUBCLASE	4730
+9434	47302	Venta por menor de grasas, aceites y lubricantes para vehículos automotores	SUBCLASE	4730
+9435	474	Venta por menor de equipo de información y de comunicaciones en tiendas especializadas	GRUPO	47
+9436	4741	Venta por menor de computadoras, equipo periférico, programas informáticos y equipo de telecomunicaciones en tiendas especializadas	CLASE	474
+9437	47411	Venta por menor de computadoras, equipo periférico y programas informáticos	SUBCLASE	4741
+9438	47412	Venta al por menor de aparatos telefónicos y comunicación	SUBCLASE	4741
+9439	4742	Venta por menor de equipos de sonido y audio	CLASE	474
+9440	47420	Venta por menor de equipos de sonido y audio	SUBCLASE	4742
+9441	475	Venta por menor de otros enseres domésticos en tiendas especializadas	GRUPO	47
+9442	4751	Venta por menor de productos textiles en tiendas especializadas	CLASE	475
+9443	47511	Venta por menor de hilados de lana y algodón	SUBCLASE	4751
+9444	47512	Venta por menor de  telas	SUBCLASE	4751
+9445	47513	Venta por menor de  confecciones para el hogar	SUBCLASE	4751
+9446	47514	Venta por menor de  artículos de mercería	SUBCLASE	4751
+9447	47519	Venta por menor de otros productos textiles en tiendas especializadas n.c.p.	SUBCLASE	4751
+9448	4752	Venta por menor de artículos de ferretería, pintura y productos de vidrio en tiendas especializadas	CLASE	475
+9449	47521	Venta por menor de artículos de ferretería, fontanería y calefacción	SUBCLASE	4752
+9450	47522	Venta por menor de pintura y productos conexos	SUBCLASE	4752
+9451	47523	Venta por menor de vidrio plano, espejos y sus productos	SUBCLASE	4752
+9452	47524	Venta por menor de materiales de construcción	SUBCLASE	4752
+9453	47529	Venta por menor de otros artículos n.c.p.	SUBCLASE	4752
+9454	4753	Venta por menor de tapices, alfombras y cubrimientos para paredes y pisos en tiendas especializadas	CLASE	475
+9455	47531	Venta por menor de tapices y alfombras	SUBCLASE	4753
+9456	47532	Venta por menor de cortinas y visillos	SUBCLASE	4753
+9457	47533	Venta por menor de cubrimientos para paredes y pisos	SUBCLASE	4753
+9458	4759	Venta por menor de aparatos eléctricos, muebles, equipo de iluminación y otros enseres domésticos en tiendas especializadas	CLASE	475
+9459	47591	Venta por menor de enseres eléctricos y línea blanca	SUBCLASE	4759
+9460	47592	Venta por menor de artículos de iluminación	SUBCLASE	4759
+9461	47593	venta por menor de muebles y colchones	SUBCLASE	4759
+9462	47594	Venta por menor de cubiertos, vajilla, cristalería y utensilios de cocina	SUBCLASE	4759
+9463	47595	Venta por menor de productos de mimbre y corcho	SUBCLASE	4759
+9464	47596	Venta por menor de instrumentos musicales	SUBCLASE	4759
+9465	47597	Venta por menor de cajas de caudales, cajas fuertes y otros sistemas de seguridad	SUBCLASE	4759
+9466	47599	Venta por menor de otros enseres domésticos para el hogar n.c.p.	SUBCLASE	4759
+9467	476	Venta al por menor de libros, periódicos y artículos recreativos en tiendas especializadas	GRUPO	47
+9468	4761	Venta por menor de libros, revistas, diarios, papel, cartón, materiales de embalaje y artículos de papelería en tiendas especializadas	CLASE	476
+9469	47611	Venta por menor de libros y revistas	SUBCLASE	4761
+9470	47612	Venta por menor de periódicos	SUBCLASE	4761
+9471	47613	Venta al por menor de material de oficina y artículos de librería	SUBCLASE	4761
+9472	4762	Venta por menor de grabaciones de música y de vídeo en tiendas especializadas	CLASE	476
+9473	47621	Venta por menor de discos compactos de audio, video y casetes grabados	SUBCLASE	4762
+9474	47622	Venta por menor de discos compactos de audio, video y casetes no grabados	SUBCLASE	4762
+9475	4763	Venta al por menor de artículos deportivos en tiendas especializadas	CLASE	476
+9476	47630	Venta al por menor de artículos deportivos en tiendas especializadas	SUBCLASE	4763
+9477	4764	Venta por menor de juegos y juguetes en tiendas especializadas	CLASE	476
+9478	47640	Venta por menor de juegos y juguetes en tiendas especializadas	SUBCLASE	4764
+9479	477	Venta al por menor de otros productos en tiendas especializadas	GRUPO	47
+9480	4771	Venta por menor de prendas de vestir y accesorios	CLASE	477
+9481	47711	Venta por menor de prendas de vestir	SUBCLASE	4771
+9482	47712	Venta por menor de accesorios de vestir	SUBCLASE	4771
+9483	4772	Venta por menor de calzado, talabartería, marroquinería y otros artículos de cueros	CLASE	477
+9484	47721	Venta por menor de calzado	SUBCLASE	4772
+9485	47722	Venta por menor de artículos de talabartería, marroquinería y otros artículos de cuero y piel	SUBCLASE	4772
+9486	47723	Venta por menor de partes, piezas y accesorios para el calzado	SUBCLASE	4772
+9487	4773	Venta por menor de productos farmacéuticos, medicinales, ortopédicos, cosméticos y artículos de perfumería en tiendas especializadas	CLASE	477
+9488	47731	Venta por menor de productos farmacéuticos y medicinales	SUBCLASE	4773
+9489	47732	Venta por menor de cosméticos y artículos de perfumería	SUBCLASE	4773
+9490	47733	Venta por menor de artículos ortopédicos	SUBCLASE	4773
+9491	4774	Venta por menor de relojes y joyas	CLASE	477
+9492	47741	Venta por menor de relojes	SUBCLASE	4774
+9493	47742	Venta por menor de artículos de joyería y bisutería	SUBCLASE	4774
+9494	47743	Venta por menor de artículos de orfebrería	SUBCLASE	4774
+9495	4775	Venta por menor de equipo fotográfico, óptico y de presición	CLASE	477
+9496	47750	Venta por menor de equipo fotográfico, óptico y de presición	SUBCLASE	4775
+9497	4776	Venta por menor de gas en garrafas, carbón y leña para uso doméstico	CLASE	477
+9498	47760	Venta por menor de gas en garrafas, carbón y leña para uso doméstico	SUBCLASE	4776
+9499	4777	Venta por menor de otros productos nuevos en tiendas especializadas	CLASE	477
+9500	47771	Venta por menor de flores naturales y artificiales	SUBCLASE	4777
+9501	47772	Venta por menor de plantas, semillas, abonos y fertilizantes	SUBCLASE	4777
+9635	55105	Servicios de residenciales	SUBCLASE	5510
+9502	47773	Venta por menor de productos veterinarios, animales domésticos y alimentos para animales	SUBCLASE	4777
+9503	47774	Venta por menor de objetos de arte, artesanías y artículos religiosos	SUBCLASE	4777
+9504	47775	Venta por menor de gafas, lentes, monturas y otros artículos no realizados a medida	SUBCLASE	4777
+9505	47776	Venta por menor de materiales y productos de limpieza	SUBCLASE	4777
+9506	47779	Venta por menor de otros productos nuevos n.c. p.	SUBCLASE	4777
+9507	4779	Venta por menor de artículos usados en tiendas especializadas	CLASE	477
+9508	47791	Venta por menor de muebles usados	SUBCLASE	4779
+9509	47792	Venta por menor de libros, revistas y similares usados	SUBCLASE	4779
+9510	47793	Venta por menor de prendas de vestir, calzado y productos textiles usados	SUBCLASE	4779
+9511	47794	Venta por menor de aparatos eléctricos, electrónicos y de computación usados	SUBCLASE	4779
+9512	47795	Venta por menor de utensilios de cocina, cristalería y vajilla usadas	SUBCLASE	4779
+9513	47796	Venta por menor de juegos y juguetes usados	SUBCLASE	4779
+9514	47799	Venta por menor en almacenes de otros artículos usados n.c.p.	SUBCLASE	4779
+9515	478	Venta por menor en puestos de venta y mercados	GRUPO	47
+9516	4781	Venta de alimentos, bebidas y tabaco en puestos de venta y mercados	CLASE	478
+9517	47810	Venta de alimentos, bebidas y tabaco en puestos de venta y mercados	SUBCLASE	4781
+9518	4782	Venta de productos textiles, prendas de vestir y calzado en puestos de venta y mercados	CLASE	478
+9519	47821	Venta de productos textiles en puestos de venta y mercados	SUBCLASE	4782
+9520	47822	Venta de prendas de vestir en puestos de venta y mercados	SUBCLASE	4782
+9521	47823	Venta de calzados en puestos de venta y mercados	SUBCLASE	4782
+9522	4783	Venta de libros, revistas y periódicos en puestos de venta y mercados	CLASE	478
+9523	47830	Venta de libros, revistas y periódicos en puestos de venta y mercados	SUBCLASE	4783
+9524	4784	Venta de papel, productos de papel y artículos de librería en puestos de venta y mercados	CLASE	478
+9525	47840	Venta de papel, productos de papel y artículos de librería en puestos de venta y mercados	SUBCLASE	4784
+9526	4785	Venta de juegos y juguetes en puestos de venta y mercados	CLASE	478
+9527	47850	Venta de juegos y juguetes en puestos de venta y mercados	SUBCLASE	4785
+9528	4786	Venta de aparatos de uso doméstico, productos eléctricos y electrónicos en puestos de venta y mercados	CLASE	478
+9529	47860	Venta de aparatos de uso doméstico, productos eléctricos y electrónicos en puestos de venta y mercados	SUBCLASE	4786
+9530	4787	Venta de grabaciones de música y vídeo en puestos de venta y mercados	CLASE	478
+9531	47870	Venta de grabaciones de música y vídeo en puestos de venta y mercados	SUBCLASE	4787
+9532	4789	Venta de otros artículos en puestos de venta y mercados	CLASE	478
+9533	47890	Venta de otros artículos en puestos de venta y mercados	SUBCLASE	4789
+9534	479	Venta por menor no realizado en tiendas, puestos de venta o mercados	GRUPO	47
+9535	4791	Venta por menor por correo y por Internet	CLASE	479
+9536	47911	Venta por menor por correo y por Internet	SUBCLASE	4791
+9537	47912	Venta por televisión, por radio y por teléfono	SUBCLASE	4791
+9538	4792	Venta realizada por vendedores ambulantes o por vendedores a domicilio	CLASE	479
+9539	47921	Venta realizada por vendedores ambulantes	SUBCLASE	4792
+9540	47922	Venta realizada por vendedores a domicilio	SUBCLASE	4792
+9541	47923	Venta mediante máquinas expendedoras	SUBCLASE	4792
+9542	47924	Actividades de casas de subastas (por menor)	SUBCLASE	4792
+9543	4799	Otras ventas por menor no realizado en tiendas, puestos de venta o mercados	CLASE	479
+9544	47990	Otras ventas por menor no realizado en tiendas, puestos de venta o mercados	SUBCLASE	4799
+9545	H	TRANSPORTE Y ALMACENAMIENTO	SECCION	\N
+9546	49	TRANSPORTE POR VÍA TERRESTRE; TRANSPORTE POR TUBERÍAS	DIVISION	H
+9547	491	Servicio de transporte por vía férrea	GRUPO	49
+9548	4911	Transporte de pasajeros por vía férrea	CLASE	491
+9549	49110	Transporte de pasajeros por vía férrea	SUBCLASE	4911
+9550	4912	Transporte de carga por vía férrea	CLASE	491
+9551	49120	Transporte de carga por vía férrea	SUBCLASE	4912
+9552	492	Otros servicios de transporte por vía terrestre	GRUPO	49
+9553	4921	Transporte regular urbano y suburbano de pasajeros por vía terrestre	CLASE	492
+9554	49211	Transporte en micros, buses y colectivos (pumakatari)	SUBCLASE	4921
+9555	49212	Transporte en minibús	SUBCLASE	4921
+9556	49213	Transporte en trufi	SUBCLASE	4921
+9557	49214	Explotación de funiculares, teleféricos de transporte urbano o suburbano	SUBCLASE	4921
+9558	49219	Otros servicios de transporte automotor urbano de pasajeros n.c.p.	SUBCLASE	4921
+9559	4922	Otras actividades de transporte de pasajeros por vía terrestre	CLASE	492
+9560	49221	Transporte regular de larga distancia de pasajeros (interprovincial, interdepartamental e internacional)	SUBCLASE	4922
+9561	49222	Transporte en taxi, radiotaxi y mototaxi	SUBCLASE	4922
+9562	49223	Transporte en autobuses escolares y para el transporte de empleados	SUBCLASE	4922
+9563	49224	Transporte de autobuses turísticos	SUBCLASE	4922
+9564	49225	Alquiler de limusinas y otros vehículos con conductor	SUBCLASE	4922
+9565	49226	Transporte de pasajeros en vehículos de tracción animal	SUBCLASE	4922
+9566	49227	Transporte en bicitaxis	SUBCLASE	4922
+9567	49229	Otros servicios de transporte automotor no regular de pasajeros n.c.p.	SUBCLASE	4922
+9568	4923	Transporte automotor de carga por carretera	CLASE	492
+9569	49231	Transporte automotor de carga urbano	SUBCLASE	4923
+9570	49232	Transporte automotor de carga interprovincial y interdepartamental	SUBCLASE	4923
+9571	49233	Transporte automotor de carga internacional	SUBCLASE	4923
+9572	49234	Transporte de carga en vehículos de tracción animal	SUBCLASE	4923
+9573	49235	Transporte automotor de mudanzas	SUBCLASE	4923
+9574	493	Transporte por tuberías	GRUPO	49
+9575	4930	Transporte por tuberías	CLASE	493
+9576	49300	Transporte por tuberías	SUBCLASE	4930
+9577	50	TRANSPORTE POR VÍA ACUÁTICA	DIVISION	49300
+9578	501	Transporte marítimo y de cabotaje	GRUPO	50
+9579	5011	Transporte de pasajeros marítimo y de cabotaje	CLASE	501
+9580	50110	Transporte de pasajeros marítimo y de cabotaje	SUBCLASE	5011
+9581	5012	Transporte de carga marítimo y de cabotaje	CLASE	501
+9582	50120	Transporte de carga marítimo y de cabotaje	SUBCLASE	5012
+9583	502	Transporte por vías de navegación interiores	GRUPO	50
+9584	5021	Transporte de pasajeros por vías de navegación interiores	CLASE	502
+9585	50210	Transporte de pasajeros por vías de navegación interiores	SUBCLASE	5021
+9586	5022	Transporte de carga por vías de navegación interiores	CLASE	502
+9587	50220	Transporte de carga por vías de navegación interiores	SUBCLASE	5022
+9588	51	TRANSPORTE POR VÍA AÉREA	DIVISION	50220
+9589	511	Transporte de pasajeros por vía aérea	GRUPO	51
+9590	5110	Transporte de pasajeros por vía aérea	CLASE	511
+9591	51100	Transporte de pasajeros por vía aérea	SUBCLASE	5110
+9592	512	Transporte de carga por vía aérea	GRUPO	51
+9593	5120	Transporte de carga por vía aérea	CLASE	512
+9594	51200	Transporte de carga por vía aérea	SUBCLASE	5120
+9595	52	ALMACENAMIENTO Y ACTIVIDADES DE APOYO AL TRANSPORTE	DIVISION	51200
+9596	521	Almacenamiento y depósito	GRUPO	52
+9597	5210	Almacenamiento y depósito	CLASE	521
+9598	52101	Explotación de instalaciones de almacenamiento y depósito para todo tipo de productos	SUBCLASE	5210
+9599	52102	Zonas francas	SUBCLASE	5210
+9600	522	Actividades de apoyo al transporte	GRUPO	52
+9601	5221	Servicios vinculados al transporte terrestre	CLASE	522
+9602	52211	Explotación de instalaciones terminales de buses	SUBCLASE	5221
+9603	52212	Explotación de estaciones ferroviarias y cambio de vías o de agujas	SUBCLASE	5221
+9604	52213	Explotación de carreteras, puentes, túneles (cobro de peaje)	SUBCLASE	5221
+9605	52214	Servicio de aparcamientos o garajes	SUBCLASE	5221
+9606	52215	Servicio de remolque y asistencia en carretera	SUBCLASE	5221
+9607	52219	Otros servicios vinculados al transporte terrestre n.c.p.	SUBCLASE	5221
+9608	5222	Servicio de puertos y otros servicios complementarios de transporte por agua	CLASE	522
+9609	52220	Servicio de puertos y otros servicios complementarios de transporte por agua	SUBCLASE	5222
+9610	5223	Servicio de aeropuertos, terminales aéreas y otros servicios complementarios del transporte aéreo	CLASE	522
+9611	52230	Servicio de aeropuertos, terminales aéreas y otros servicios complementarios del transporte aéreo	SUBCLASE	5223
+9612	5224	Servicios de manipulación de carga	CLASE	522
+9613	52240	Servicios de manipulación de carga	SUBCLASE	5224
+9614	5229	Otras actividades de apoyo al transporte	CLASE	522
+9615	52291	Transporte intermodal de carga y/o servicio de operadores logísticos para el transporte de mercaderías	SUBCLASE	5229
+9616	52292	Servicios de tramitación de formalidades de aduana o agencias despachantes de aduana	SUBCLASE	5229
+9617	52293	Servicio de embalaje y desembalaje de cajas y cajones	SUBCLASE	5229
+9618	52294	Servicio de inspección, pesaje y muestreo de la carga	SUBCLASE	5229
+9619	52299	Otras actividades de apoyo al transporte n.c.p.	SUBCLASE	5229
+9620	53	ACTIVIDADES POSTALES Y DE MENSAJERÍA	DIVISION	52299
+9621	531	Actividades de correo nacional	GRUPO	53
+9622	5310	Actividades de correo nacional	CLASE	531
+9623	53100	Actividades de correo nacional	SUBCLASE	5310
+9624	532	Actividades de courier	GRUPO	53
+9625	5320	Actividades de courier	CLASE	532
+9626	53200	Actividades de courier	SUBCLASE	5320
+9627	I	ACTIVIDADES DE ALOJAMIENTO Y SERVICIO DE COMIDAS	SECCION	\N
+9628	55	ACTIVIDADES DE ALOJAMIENTO	DIVISION	I
+9629	551	Actividades de alojamiento	GRUPO	55
+9630	5510	Servicio de hoteles, moteles y otro tipo de hospedaje para estancias cortas	CLASE	551
+9631	55101	Servicios de hoteles	SUBCLASE	5510
+9632	55102	Servicios de apart hoteles	SUBCLASE	5510
+9633	55103	Servicios de hostales	SUBCLASE	5510
+9634	55104	Servicios de casa de huéspedes	SUBCLASE	5510
+9637	55107	Servicios de cabañas y refugios de vacaciones	SUBCLASE	5510
+9638	55108	Servicios de moteles	SUBCLASE	5510
+9639	55109	Otros servicios de alojamiento n.c.p.	SUBCLASE	5510
+9640	552	Actividades de campamentos para visitantes temporales	GRUPO	55
+9641	5520	Actividades de campamentos para visitantes temporales	CLASE	552
+9642	55200	Actividades de campamentos para visitantes temporales	SUBCLASE	5520
+9643	559	Otras actividades de alojamiento	GRUPO	55
+9644	5590	Otras actividades de alojamiento	CLASE	559
+9645	55900	Otras actividades de alojamiento	SUBCLASE	5590
+9646	56	ACTIVIDADES DE EXPENDIO DE COMIDAS Y BEBIDAS	DIVISION	55900
+9647	561	Actividades de expendio de comidas en locales y puestos de comidas	GRUPO	56
+9648	5611	Expendio de comida en locales	CLASE	561
+9649	56111	Expendio de comidas en restaurantes, churrasquerías, chifas, fricaserías y otros locales	SUBCLASE	5611
+9650	56112	Expendio de comidas en cafeterías, confiterías, snack, heladerías y otros locales de comida rápida	SUBCLASE	5611
+9651	5612	Expendio de comida en puestos fijos y móviles	CLASE	561
+9652	56120	Expendio de comida en puestos fijos y móviles	SUBCLASE	5612
+9653	562	Suministro de comidas por encargo y otras actividades de servicio de comidas	GRUPO	56
+9654	5621	Suministro de comidas bajo contrato	CLASE	562
+9655	56210	Suministro de comidas bajo contrato	SUBCLASE	5621
+9656	5629	Suministro de comidas  por concesionarios	CLASE	562
+9657	56290	Suministro de comidas  por concesionarios	SUBCLASE	5629
+9658	563	Expendio de bebidas en locales y puestos	GRUPO	56
+9659	5630	Expendio de bebidas en locales y puestos	CLASE	563
+9660	56301	Expendio de bebidas alcohólicas en locales	SUBCLASE	5630
+9661	56302	Expendio de jugos en locales	SUBCLASE	5630
+9662	56303	Expendio de jugos y bebidas en puestos fijos, móviles y ambulantes	SUBCLASE	5630
+9663	J	INFORMACIÓN Y COMUNICACIONES	SECCION	\N
+9664	58	ACTIVIDADES DE EDICIÓN	DIVISION	J
+9665	581	Edición de libros, publicaciones periódicas y otras actividades de edición	GRUPO	58
+9666	5811	Edición de libros impresos, en formato electrónico, grabaciones sonoras o por Internet	CLASE	581
+9667	58110	Edición de libros impresos, en formato electrónico, grabaciones sonoras o por Internet	SUBCLASE	5811
+9668	5812	Edición de directorios, guías telefónicas y listas de correo	CLASE	581
+9669	58120	Edición de directorios, guías telefónicas y listas de correo	SUBCLASE	5812
+9670	5813	Edición de periódicos, revistas y otras publicaciones periódicas	CLASE	581
+9671	58130	Edición de periódicos, revistas y otras publicaciones periódicas	SUBCLASE	5813
+9672	5819	Otras actividades de edición	CLASE	581
+9673	58190	Otras actividades de edición	SUBCLASE	5819
+9674	582	Edición de programas informáticos	GRUPO	58
+9675	5820	Edición de programas informáticos	CLASE	582
+9676	58200	Edición de programas informáticos	SUBCLASE	5820
+9677	59	ACTIVIDADES DE PRODUCCIÓN DE PELÍCULAS CINEMATOGRÁFICAS, VÍDEOS Y PROGRAMAS DE TELEVISIÓN, GRABACIÓN DE SONIDO Y EDICIÓN DE MÚSICA	DIVISION	58200
+9678	591	Actividades de producción de películas cinematográficas, vídeos y programas de televisión	GRUPO	59
+9679	5911	Actividades de producción de películas cinematográficas, vídeos y programas de televisión	CLASE	591
+9680	59110	Actividades de producción de películas cinematográficas, vídeos y programas de televisión	SUBCLASE	5911
+9681	5912	Actividades de postproducción de películas cinematográficas, vídeos y programas de televisión	CLASE	591
+9682	59120	Actividades de postproducción de películas cinematográficas, vídeos y programas de televisión	SUBCLASE	5912
+9683	5913	Actividades de distribución de películas cinematográficas, vídeos y programas de televisión	CLASE	591
+9684	59130	Actividades de distribución de películas cinematográficas, vídeos y programas de televisión	SUBCLASE	5913
+9685	5914	Actividades de exhibición de películas cinematográficas y cintas de vídeo	CLASE	591
+9686	59140	Actividades de exhibición de películas cinematográficas y cintas de vídeo	SUBCLASE	5914
+9687	592	Actividades de grabación de sonido y edición de música	GRUPO	59
+9688	5920	Actividades de grabación de sonido y edición de música	CLASE	592
+9689	59201	Actividades de grabación de sonido	SUBCLASE	5920
+9690	59202	Actividades de edición de música	SUBCLASE	5920
+9691	59203	Edición de libros de música y partituras	SUBCLASE	5920
+9692	60	ACTIVIDADES DE PROGRAMACIÓN Y TRANSMISIÓN DE RADIO TELEVISIÓN	DIVISION	59203
+9693	601	Transmisiones de radio	GRUPO	60
+9694	6010	Transmisiones de radio	CLASE	601
+9695	60100	Transmisiones de radio	SUBCLASE	6010
+9696	602	Programación y transmisiones de televisión	GRUPO	60
+9697	6020	Programación y transmisiones de televisión	CLASE	602
+9698	60200	Programación y transmisiones de televisión	SUBCLASE	6020
+9699	61	TELECOMUNICACIONES	DIVISION	60200
+9700	611	Actividades de telecomunicación alámbrica	GRUPO	61
+9701	6110	Actividades de telecomunicación alámbrica	CLASE	611
+9702	61100	Servicios de telefonía fija e internet por conexión alámbrica	SUBCLASE	6110
+9703	612	Actividades de telecomunicación inalámbrica	GRUPO	61
+9704	6120	Actividades de telecomunicación inalámbrica	CLASE	612
+9705	61200	Servicios de telefonía móvil e internet por conexión inalámbrica	SUBCLASE	6120
+9706	613	Actividades de telecomunicaciones por satélite	GRUPO	61
+9707	6130	Actividades de telecomunicaciones por satélite	CLASE	613
+9708	61300	Actividades de telecomunicaciones por satélite	SUBCLASE	6130
+9709	619	Otras actividades de telecomunicaciones	GRUPO	61
+9710	6190	Servicios telefónicos y de internet al público y otras actividades de telecomunicaciones	CLASE	619
+9711	61900	Servicios telefónicos y de internet al público y otras actividades de telecomunicaciones	SUBCLASE	6190
+9712	62	PROGRAMACIÓN INFORMÁTICA, CONSULTORÍA DE INFORNÁTICA Y ACTIVIDADES CONEXAS	DIVISION	61900
+9713	620	Programación informática y de consultoría de informática y actividades conexas	GRUPO	62
+9714	6201	Actividades de programación informática	CLASE	620
+9715	62010	Actividades de programación informática	SUBCLASE	6201
+9716	6202	Actividades de consultoría de informática y de gestión de instalaciones informáticas	CLASE	620
+9717	62020	Actividades de consultoría de informática y de gestión de instalaciones informáticas	SUBCLASE	6202
+9718	6209	Otras actividades de la tecnología de la información y de servicios informáticos	CLASE	620
+9719	62090	Otras actividades delatecnología de la información y de servicios informáticos	SUBCLASE	6209
+9720	63	ACTIVIDADES DE SERVICIOS DE INFORMACIÓN	DIVISION	62090
+9721	631	Procesamiento de datos, hospedaje y actividades conexas; portales web	GRUPO	63
+9722	6311	Procesamiento de datos, hospedaje y actividades conexas	CLASE	631
+9723	63110	Procesamiento de datos, hospedaje y actividades conexas	SUBCLASE	6311
+9724	6312	Portales web	CLASE	631
+9725	63120	Portales web	SUBCLASE	6312
+9726	639	Otras actividades de servicios de información	GRUPO	63
+9727	6391	Actividades de agencias de noticias	CLASE	639
+9728	63910	Actividades de agencias de noticias	SUBCLASE	6391
+9729	6399	Otras actividades de servicios de información n.c.p.	CLASE	639
+9730	63990	Otras actividades de servicios de información n.c.p.	SUBCLASE	6399
+9731	K	INTERMEDIACIÓN FINANCIERA Y SEGUROS	SECCION	\N
+9732	64	INTERMEDIACION FINANCIERA, EXCEPTO PLANES DE SEGUROS Y DE ADMINISTRACIÓN DE FONDOS DE JUBILACIONES Y PENSIONES	DIVISION	K
+9733	641	Intermediación monetaria	GRUPO	64
+9734	6411	Banca central	CLASE	641
+9735	64110	Banca central	SUBCLASE	6411
+9736	6412	Servicios de entidades financieras de segundo piso	CLASE	641
+9737	64120	Servicios de entidades financieras de segundo piso	SUBCLASE	6412
+9738	6419	Otros tipos de intermediación monetaria	CLASE	641
+9739	64191	Servicios de entidades bancarias	SUBCLASE	6419
+9740	64192	Servicios de cooperativas de ahorro y crédito	SUBCLASE	6419
+9741	64193	Servicios de mutuales de ahorro y préstamo	SUBCLASE	6419
+9742	64194	Servicios de fondos financieros privados	SUBCLASE	6419
+9743	642	Actividades de sociedades de cartera	GRUPO	64
+9744	6420	Actividades de sociedades de cartera	CLASE	642
+9745	64200	Actividades de sociedades de cartera	SUBCLASE	6420
+9746	643	Fondos y sociedades de inversión y entidades financieras similares	GRUPO	64
+9747	6430	Fondos y sociedades de inversión y entidades financieras similares	CLASE	643
+9748	64300	Fondos y sociedades de inversión y entidades financieras similares	SUBCLASE	6430
+9749	649	Otras actividades de servicios financieros, excepto las de seguro y fondos de pensiones	GRUPO	64
+9750	6491	Arrendamiento financiero	CLASE	649
+9751	64910	Arrendamiento financiero	SUBCLASE	6491
+9752	6492	Otras actividades de concesión de crédito	CLASE	649
+9753	64921	Actividades de casas de empeño	SUBCLASE	6492
+9754	64922	Concesión de préstamos fuera del sistema bancario	SUBCLASE	6492
+9755	64923	Servicios financieros de instituciones no dedicadas a la interminación monetaria	SUBCLASE	6492
+9756	6499	Otras actividades de servicios financieros, excepto las de seguros y fondos de pensiones n.c.p.	CLASE	649
+9757	64990	Otras actividades de servicios financieros, excepto las de seguros y fondos de pensiones n.c.p.	SUBCLASE	6499
+9758	65	SERVICIOS DE SEGUROS, REASEGUROS Y FONDOS DE PENSIONES, EXCEPTO PLANES DE SEGURIDAD SOCIAL DE AFILIACIÓN OBLIGATORIA	DIVISION	64990
+9759	651	Seguros	GRUPO	65
+9760	6511	Servicio de planes de seguros de vida	CLASE	651
+9761	65110	Servicio de planes de seguros de vida	SUBCLASE	6511
+9762	6512	Servicios de planes de seguros generales	CLASE	651
+9763	65120	Servicios de seguros generales	SUBCLASE	6512
+9764	652	Reaseguros	GRUPO	65
+9765	6520	Reaseguros	CLASE	652
+9766	65200	Reaseguros	SUBCLASE	6520
+9767	653	Fondos de pensiones	GRUPO	65
+9768	6530	Fondos de pensiones	CLASE	653
+9769	65300	Fondos de pensiones	SUBCLASE	6530
+9770	66	ACTIVIDADES AUXILIARES DE LAS ACTIVIDADES DE SERVICIOS FINANCIEROS	DIVISION	65300
+9771	661	Actividades auxiliares de las actividades de servicios financieros, excepto las de seguros y fondos de pensiones	GRUPO	66
+9772	6611	Administración de mercados financieros	CLASE	661
+9773	66110	Bolsa de valores	SUBCLASE	6611
+9774	6612	Títulos de valor y contratos de corretaje de materias primas	CLASE	661
+9775	66121	Actividades de corredores de valores	SUBCLASE	6612
+9776	66122	Actividades de casas de cambio	SUBCLASE	6612
+9777	6619	Otras actividades auxiliares de los servicios financieros	CLASE	661
+9843	73100	Publicidad	SUBCLASE	7310
+9778	66190	Otras actividades auxiliares de las actividades de los servicios financieros	SUBCLASE	6619
+9779	662	Actividades auxiliares de las actividades de seguros y fondos de pensiones	GRUPO	66
+9780	6621	Evaluación de riesgos y daños	CLASE	662
+9781	66210	Evaluación de riesgos y daños	SUBCLASE	6621
+9782	6622	Actividades de agentes y corredores de seguros	CLASE	662
+9783	66220	Actividades de agentes y corredores de seguros	SUBCLASE	6622
+9784	6629	Otras actividades auxiliares de las actividades de seguros y fondos de pensiones	CLASE	662
+9785	66290	Otras actividades auxiliares de las actividades de seguros y fondos de pensiones	SUBCLASE	6629
+9786	663	Actividades de gestión de fondos	GRUPO	66
+9787	6630	Actividades de gestión de fondos	CLASE	663
+9788	66300	Actividades de gestión de fondos	SUBCLASE	6630
+9789	L	ACTIVIDADES INMOBILIARIAS	SECCION	\N
+9790	68	ACTIVIDADES INMOBILIARIAS	DIVISION	L
+9791	681	Actividades inmobiliarias realizadas con bienes propios o arrendados	GRUPO	68
+9792	6810	Actividades inmobiliarias realizadas con bienes propios o arrendados	CLASE	681
+9793	68101	Actividades de alquiler, compra, venta de bienes inmuebles propios realizados sin intermediarios	SUBCLASE	6810
+9794	68102	Actividades de anticrético de bienes inmuebles propios realizadas sin intermediarios	SUBCLASE	6810
+9795	682	Actividades inmobiliarias realizadas a cambio de una retribución o por contrato	GRUPO	68
+9796	6820	Actividades inmobiliarias realizadas a cambio de una retribución o por contrato	CLASE	682
+9797	68201	Actividades inmobiliarias de bienes inmuebles con intermediarios	SUBCLASE	6820
+9798	68202	Administración de bienes inmuebles	SUBCLASE	6820
+9799	M	SERVICIOS PROFESIONALES Y TECNICOS	SECCION	\N
+9800	69	SERVICIOS JURÍDICOS Y DE CONTABILIDAD	DIVISION	M
+9801	691	Servicios jurídicos	GRUPO	69
+9802	6910	Servicios jurídicos	CLASE	691
+9803	69100	Servicios jurídicos	SUBCLASE	6910
+9804	692	Servicios de contabilidad, teneduría de libros y auditoria; consultoría fiscal	GRUPO	69
+9805	6920	Servicios de contabilidad, teneduría de libros y auditoria; consultoría fiscal	CLASE	692
+9806	69200	Servicios de contabilidad, teneduría de libros y auditoria; consultoría fiscal	SUBCLASE	6920
+9807	70	ACTIVIDADES DE OFICINAS PRINCIPALES; ACTIVIDADES DE CONSULTORÍA DE GESTIÓN	DIVISION	69200
+9808	701	Actividades de oficinas principales	GRUPO	70
+9809	7010	Actividades de oficinas principales	CLASE	701
+9810	70100	Actividades de oficinas principales	SUBCLASE	7010
+9811	702	Actividades de consultoría de gestión	GRUPO	70
+9812	7020	Actividades de consultoría de gestión	CLASE	702
+9813	70201	Consultoría en planificación estratégica y organizativa	SUBCLASE	7020
+9814	70202	Consultoría en relaciones públicas y comunicaciones	SUBCLASE	7020
+9815	70203	Consultoría en asesoramiento y asistencia operativa a las empresas y la administración pública	SUBCLASE	7020
+9816	70209	Otras actividades de consultoría de gestión n.c.p.	SUBCLASE	7020
+9817	71	ACTIVIDADES DE ARQUITECTURA E INGENIERÍA; ENSAYOS Y ANÁLISIS TÉCNICO	DIVISION	70209
+9818	711	Actividades de arquitectura e ingeniería y actividades conexas de consultoría técnica	GRUPO	71
+9819	7110	Actividades de arquitectura e ingeniería y actividades conexas de consultoría técnica	CLASE	711
+9820	71101	Actividades de consultoría en arquitectura	SUBCLASE	7110
+9821	71102	Actividades de consultoría en ingeniería civil, hidráulica y afines	SUBCLASE	7110
+9822	71103	Actividades de consultoría en ingeniería eléctrica, mecánica, industrial y de sistema de seguridad	SUBCLASE	7110
+9823	71104	Actividades de consultoría en estudios geofísicos, geológicos y sismográficos	SUBCLASE	7110
+9824	71105	Actividades de consultoría en estudios geodésicos, agrimensura y cartografía	SUBCLASE	7110
+9825	71109	Otras actividades de consultorías en ingeniería n.c.p.	SUBCLASE	7110
+9826	712	Ensayos y análisis técnicos	GRUPO	71
+9827	7120	Ensayos y análisis técnicos	CLASE	712
+9828	71201	Ensayos de calificación, fiabilidad, composición, pureza de los productos (verificadora)	SUBCLASE	7120
+9829	71202	Ensayos de medición de indicadores ambientales	SUBCLASE	7120
+9830	71203	Servicios de inspección técnica de vehículos de motor	SUBCLASE	7120
+9831	71204	Actividades de laboratorios policiales	SUBCLASE	7120
+9832	71209	Otros servicios de ensayo y análisis técnico n.c.p.	SUBCLASE	7120
+9833	72	INVESTIGACIÓN Y DESARROLLO	DIVISION	71209
+9834	721	Investigaciones y desarrollo experimental en el campo de las Ciencias Naturales y la Ingeniería	GRUPO	72
+9835	7210	Investigaciones y desarrollo experimental en el campo de las Ciencias Naturales y la Ingeniería	CLASE	721
+9836	72100	Investigaciones y desarrollo experimental en el campo de las Ciencias Naturales y la Ingeniería	SUBCLASE	7210
+9837	722	Investigaciones y desarrollo experimental en el campo de las Ciencias Sociales y las Humanidades	GRUPO	72
+9838	7220	Investigaciones y desarrollo experimental en el campo de las Ciencias Sociales y las Humanidades	CLASE	722
+9839	72200	Investigaciones y desarrollo experimental en el campo de las Ciencias Sociales y las Humanidades	SUBCLASE	7220
+9840	73	PUBLICIDAD Y ESTUDIOS DE MERCADO	DIVISION	72200
+9844	732	Estudios de mercado y realización de encuestas de opinión pública	GRUPO	73
+9845	7320	Estudios de mercado y realización de encuestas de opinión pública	CLASE	732
+9846	73200	Estudios de mercado y realización de encuestas de opinión pública	SUBCLASE	7320
+9847	74	OTRAS ACTIVIDADES PROFESIONALES, CIENTÍFICAS Y TÉCNICAS	DIVISION	73200
+9848	741	Actividades especializadas de diseño	GRUPO	74
+9849	7410	Actividades especializadas de diseño	CLASE	741
+9850	74101	Actividades de diseño de prendas de vestir y telas	SUBCLASE	7410
+9851	74102	Actividades de diseño gráfico	SUBCLASE	7410
+9852	74103	Actividades de decorado de interiores	SUBCLASE	7410
+9853	74104	Actividades de diseño de joyas	SUBCLASE	7410
+9854	74105	Actividades de diseño de muebles	SUBCLASE	7410
+9855	74109	Otras actividades especializadas de diseño	SUBCLASE	7410
+9856	742	Actividades de fotografía	GRUPO	74
+9857	7420	Actividades de fotografía	CLASE	742
+9858	74201	Actividades de fotografía	SUBCLASE	7420
+9859	74202	Actividades de filmación de acontecimientos sociales	SUBCLASE	7420
+9860	749	Otras actividades profesionales y técnicas n.c.p.	GRUPO	74
+9861	7491	Consultoría en agronomía	CLASE	749
+9862	74910	Consultoría en agronomía	SUBCLASE	7491
+9863	7492	Actividades de traducción e interpretación	CLASE	749
+9864	74920	Actividades de traducción e interpretación	SUBCLASE	7492
+9865	7493	Consultoría en economía	CLASE	749
+9866	74930	Consultoría en economía	SUBCLASE	7493
+9867	7494	Consultoría en sociología	CLASE	749
+9868	74940	Consultoría en sociología	SUBCLASE	7494
+9869	7495	Consultoría en antropología y arqueología	CLASE	749
+9870	74950	Consultoría en antropología y arqueología	SUBCLASE	7495
+9871	7496	Actividades en meteorología	CLASE	749
+9872	74960	Actividades en meteorología	SUBCLASE	7496
+9873	7497	Actividades de agentes y representantes de artistas y deportistas	CLASE	749
+9874	74970	Actividades de agentes y representantes de artistas y deportistas	SUBCLASE	7497
+9875	7498	Consultoría en mercadotécnia	CLASE	749
+9876	74980	Consultoría en mercadotecnia	SUBCLASE	7498
+9877	7499	Otras actividades profesionales y técnicas n.c.p.	CLASE	749
+9878	74991	Otras actividades especializadas de carácter profesional	SUBCLASE	7499
+9879	74992	Otras actividades especializadas de carácter técnico	SUBCLASE	7499
+9880	75	ACTIVIDADES VETERINARIAS	DIVISION	74992
+9881	750	Actividades veterinarias	GRUPO	75
+9882	7500	Actividades veterinarias	CLASE	750
+9883	75000	Actividades veterinarias	SUBCLASE	7500
+9884	N	ACTIVIDADES DE SERVICIOS ADMINISTRATIVOS Y DE APOYO	SECCION	\N
+9885	77	ACTIVIDADES DE ALQUILER	DIVISION	N
+9886	771	Alquiler de vehículos automotores sin conductor	GRUPO	77
+9887	7710	Alquiler de vehículos automotores sin conductor	CLASE	771
+9888	77100	Alquiler de vehículos automotores de pasajeros sin conductor	SUBCLASE	7710
+9889	772	Alquiler de efectos personales y enseres domésticos	GRUPO	77
+9890	7721	Alquiler de equipo recreativo y deportivo	CLASE	772
+9891	77211	Alquiler de embarcaciones de recreo	SUBCLASE	7721
+9892	77212	Alquiler de bicicletas	SUBCLASE	7721
+9893	77219	Alquiler de otro equipo deportivo y recreativo n.c.p.	SUBCLASE	7721
+9894	7722	Alquiler de cintas de vídeo	CLASE	772
+9895	77220	Alquiler de cintas de vídeo	SUBCLASE	7722
+9896	7729	Alquiler de otros efectos personales y enseres domésticos	CLASE	772
+9897	77291	Alquiler de productos textiles, prendas de vestir y calzado	SUBCLASE	7729
+9898	77292	Alquiler de utensilios de cocina, vajilla, muebles y otros artículos de uso doméstico	SUBCLASE	7729
+9899	77293	Alquiler de instrumentos musicales, equipo de música, luz y sonido	SUBCLASE	7729
+9900	77294	Alquiler de libros, periódicos y revistas	SUBCLASE	7729
+9901	77295	Alquiler de material de escenografía y de vestuario	SUBCLASE	7729
+9902	77299	Alquiler de otros efectos personales y enseres domésticos n.c.p.	SUBCLASE	7729
+9903	773	Alquiler de otros tipos de maquinaria, equipo y bienes tangibles	GRUPO	77
+9904	7731	Alquiler de motocicletas y equipo de transporte acuático y aéreo	CLASE	773
+9905	77311	Alquiler de motocicletas	SUBCLASE	7731
+9906	77312	Alquiler de equipo de transporte acuático	SUBCLASE	7731
+9907	77313	Alquiler de equipo de transporte aéreo	SUBCLASE	7731
+9908	77319	Alquiler de otros equipos de transporte n.c.p.	SUBCLASE	7731
+9909	7732	Alquiler de maquinaria y equipo agropecuario sin operador	CLASE	773
+9910	77320	Alquiler de maquinaria y equipo agropecuario sin operador	SUBCLASE	7732
+9911	7733	Alquiler de maquinaria y equipo de construcción e ingeniería civil sin operador	CLASE	773
+9912	77330	Alquiler de maquinaria y equipo de construcción e ingeniería civil sin operador	SUBCLASE	7733
+9913	7734	Alquiler de equipo y mobiliario de oficina	CLASE	773
+9914	77340	Alquiler de equipo y mobiliario de oficina	SUBCLASE	7734
+9915	7739	Alquiler de otros tipos de maquinaria y equipo sin operador n.c.p.	CLASE	773
+9916	77390	Alquiler de otros tipos de maquinaria y equipo sin operador n.c.p.	SUBCLASE	7739
+9917	774	Arrendamiento de productos de propiedad intelectual, y productos similares, excepto obras protegidas por derechos de autor	GRUPO	77
+9918	7740	Arrendamiento de productos de propiedad intelectual, y productos similares, excepto obras protegidas por derechos de autor	CLASE	774
+9919	77400	Arrendamiento de productos de propiedad intelectual, y productos similares, excepto obras protegidas por derechos de autor	SUBCLASE	7740
+9920	78	ACTIVIDADES DE EMPLEO	DIVISION	77400
+9921	781	Actividades de agencias de empleo	GRUPO	78
+9922	7810	Actividades de agencias de empleo	CLASE	781
+9923	78100	Actividades de agencias de empleo	SUBCLASE	7810
+9924	782	Actividades de agencias de empleo temporal	GRUPO	78
+9925	7820	Actividades de agencias de empleo temporal	CLASE	782
+9926	78200	Actividades de agencias de empleo temporal	SUBCLASE	7820
+9927	783	Otras actividades de dotación de recursos humanos	GRUPO	78
+9928	7830	Otras actividades de dotación de recursos humanos	CLASE	783
+9929	78300	Otras actividades de dotación de recursos humanos	SUBCLASE	7830
+9930	79	ACTIVIDADES DE AGENCIAS DE VIAJE, OPERADORES TURÍSTICOS, SERVICIOS DE RESERVAS Y ACTIVIDADES CONEXAS	DIVISION	78300
+9931	791	Actividades de agencias de viajes y operadores turísticos	GRUPO	79
+9932	7911	Actividades de agencias de viajes	CLASE	791
+9933	79110	Actividades de agencias de viajes	SUBCLASE	7911
+9934	7912	Actividades de operadores turísticos	CLASE	791
+9935	79120	Actividades de operadores turísticos	SUBCLASE	7912
+9936	799	Otros servicios de reservas y actividades conexas	GRUPO	79
+9937	7990	Otros servicios de reservas y actividades conexas	CLASE	799
+9938	79900	Otros servicios de reservas y actividades conexas	SUBCLASE	7990
+9939	80	ACTIVIDADES DE SEGURIDAD E INVESTIGACIÓN	DIVISION	79900
+9940	801	Actividades de seguridad privada	GRUPO	80
+9941	8010	Actividades de seguridad privada	CLASE	801
+9942	80101	Actividades de seguridad privada	SUBCLASE	8010
+9943	80102	Servicio de transporte de caudales y objetos de valor	SUBCLASE	8010
+9944	802	Actividades de servicios de sistemas de seguridad	GRUPO	80
+9945	8020	Actividades de servicios de sistemas de seguridad	CLASE	802
+9946	80200	Actividades de servicios de sistemas de seguridad	SUBCLASE	8020
+9947	803	Actividades de investigación y de detectives	GRUPO	80
+9948	8030	Actividades de investigación y de detectives	CLASE	803
+9949	80300	Actividades de investigación y de detectives	SUBCLASE	8030
+9950	81	ACTIVIDADES DE SERVICIOS A EDIFICIOS Y DE PAISAJISMO	DIVISION	80300
+9951	811	Actividades combinadas de apoyo a instalaciones	GRUPO	81
+9952	8110	Actividades combinadas de apoyo a instalaciones	CLASE	811
+9953	81100	Actividades combinadas de apoyo a instalaciones	SUBCLASE	8110
+9954	812	Actividades de limpieza	GRUPO	81
+9955	8121	Limpieza general de edificios	CLASE	812
+9956	81210	Limpieza general de edificios	SUBCLASE	8121
+9957	8129	Otras actividades de limpieza de edificios e instalaciones industriales	CLASE	812
+9958	81291	Actividades especializadas de limpieza de edificios	SUBCLASE	8129
+9959	81292	Servicios de limpieza y mantenimiento de piscinas	SUBCLASE	8129
+9960	81293	Limpieza de maquinaria industrial	SUBCLASE	8129
+9961	81294	Actividades de desinfección y exterminio de plagas	SUBCLASE	8129
+9962	81295	Servicio de barrido de calles	SUBCLASE	8129
+9963	81299	Otros servicios de limpieza n.c.p.	SUBCLASE	8129
+9964	813	Actividades de paisajismo y servicios de mantenimiento conexos	GRUPO	81
+9965	8130	Actividades de plantación, cuidado y mantenimiento de parques, jardines en áreas privadas o comunitarias	CLASE	813
+9966	81300	Actividades de plantación, cuidado y mantenimiento de parques, jardines en áreas privadas o comunitarias	SUBCLASE	8130
+9967	82	ACTIVIDADES ADMINISTRATIVAS Y DE APOYO DE OFICINA Y OTRAS ACTIVIDADES A LAS EMPRESAS	DIVISION	81300
+9968	821	Actividades administrativas y de apoyo de oficina	GRUPO	82
+9969	8211	Actividades combinadas de servicios administrativos de oficina	CLASE	821
+9970	82110	Actividades combinadas de servicios administrativos de oficina	SUBCLASE	8211
+9971	8219	Actividades de fotocopiado, preparación de documentos y otras actividades especializadas de apoyo de oficina	CLASE	821
+9972	82191	Servicios de fotocopiado	SUBCLASE	8219
+9973	82192	Servicio de transcripción (taquigrafía, mecanografía)	SUBCLASE	8219
+9974	82193	Servicio de escritorios públicos para el llenado de formularios de impuestos y declaraciones	SUBCLASE	8219
+9975	82199	Otras actividades de apoyo de oficina n.c.p.	SUBCLASE	8219
+9976	822	Actividades de centros de llamadas	GRUPO	82
+9977	8220	Actividades de centros de llamadas	CLASE	822
+9978	82200	Actividades de centros de llamadas	SUBCLASE	8220
+9979	823	Organización de conferencias, reuniones, convenciones y exposiciones comerciales	GRUPO	82
+9980	8230	Organización de conferencias, reuniones, convenciones y exposiciones comerciales	CLASE	823
+9981	82300	Organización de conferencias, reuniones, convenciones y exposiciones comerciales	SUBCLASE	8230
+9982	829	Actividades de servicios de apoyo a las empresas n.c.p	GRUPO	82
+9983	8291	Actividades de agencias de cobro y agencias de calificación crediticia	CLASE	829
+9984	82910	Actividades de agencias de cobro y agencias de calificación crediticia	SUBCLASE	8291
+9985	8292	Actividades de envasado y empaquetado	CLASE	829
+9986	82920	Actividades de envasado y empaquetado	SUBCLASE	8292
+9987	8299	Otras actividades de servicios de apoyo a las empresas n.c.p.	CLASE	829
+9988	82990	Otras actividades de servicios de apoyo a las empresas n.c.p.	SUBCLASE	8299
+9989	O	ADMINISTRACIÓN PÚBLICA, DEFENSA Y PLANES DE SEGURIDAD SOCIAL DE AFILIACIÓN OBLIGATORIA	SECCION	\N
+9990	84	ADMINISTRACION PÚBLICA Y DEFENSA; PLANES DE SEGURIDAD SOCIAL Y DE AFILIACIÓN OBLIGATORIA	DIVISION	O
+9991	841	Administración del Estado y aplicación de la política económica y social de la comunidad	GRUPO	84
+9992	8411	Actividades de la administración pública en general	CLASE	841
+9993	84111	Actividades de los Órganos Ejecutivo, Legislativo y Electoral	SUBCLASE	8411
+9994	84112	Actividades de Ministerios y Viceministerios	SUBCLASE	8411
+9995	84113	Actividades de los Gobiernos Departamentales Autónomos	SUBCLASE	8411
+9996	84114	Actividades de los Gobiernos Municipales Autónomos	SUBCLASE	8411
+9997	8412	Regulación de las actividades de organismos que prestan servicios de salud, educación, cultura, vivienda y otros servicios sociales, excepto servicios de seguridad social	CLASE	841
+9998	84121	Actividades de regulación y gestión de la salud (SEDES)	SUBCLASE	8412
+9999	84122	Actividades de regulación y gestión de la educación (Dirección Departamental de Educación)	SUBCLASE	8412
+10000	84123	Actividades de regulación y gestión de la vivienda y urbanismo	SUBCLASE	8412
+10001	84124	Actividades de regulación y gestión de actividades recreativas, culturales y religiosas (Instituto Boliviano de Cultura)	SUBCLASE	8412
+10002	84125	Actividades de regulación y gestión de programas de protección ambiental	SUBCLASE	8412
+10003	84129	Regulación de las actividades de otros organismos que prestan servicios sociales n.c.p.	SUBCLASE	8412
+10004	8413	Actividades de regulación y facilitación de la actividad económica	CLASE	841
+10005	84130	Actividades de regulación y facilitación de la actividad económica	SUBCLASE	8413
+10006	842	Prestación de servicios a la comunidad en general	GRUPO	84
+10007	8421	Ministerio de relaciones exteriores, misiones diplomáticas y consulares	CLASE	842
+10008	84210	Ministerio de relaciones exteriores, misiones diplomáticas y consulares	SUBCLASE	8421
+10009	8422	Actividades de defensa	CLASE	842
+10010	84220	Actividades de defensa	SUBCLASE	8422
+10011	8423	Actividades de mantenimiento del orden público y de seguridad	CLASE	842
+10012	84231	Actividades de la policía y protección civil (bomberos y tránsito)	SUBCLASE	8423
+10013	84232	Actividades de servicios judiciales y de justicia (administración de prisiones)	SUBCLASE	8423
+10014	843	Actividades de planes de seguridad social de afiliación obligatoria	GRUPO	84
+10015	8430	Actividades de planes de seguridad social de afiliación obligatoria	CLASE	843
+10016	84300	Actividades de planes de seguridad social de afiliación obligatoria	SUBCLASE	8430
+10017	P	SERVICIOS DE EDUCACIÓN	SECCION	\N
+10018	85	SERVICIOS DE EDUCACIÓN	DIVISION	P
+10019	851	Educación preescolar y primaria	GRUPO	85
+10020	8511	Educación preescolar	CLASE	851
+10021	85110	Educación preescolar	SUBCLASE	8511
+10022	8512	Educación primaria	CLASE	851
+10023	85120	Educación primaria	SUBCLASE	8512
+10024	852	Educación secundaria	GRUPO	85
+10025	8521	Educación secundaria de formación general	CLASE	852
+10026	85210	Educación secundaria de formación general	SUBCLASE	8521
+10027	8522	Educación secundaria de formación técnica y profesional	CLASE	852
+10028	85220	Educación secundaria de formación técnica y profesional	SUBCLASE	8522
+10029	853	Educación superior	GRUPO	85
+10030	8530	Educación superior	CLASE	853
+10031	85301	Educación superior no universitaria	SUBCLASE	8530
+10032	85302	Educación superior universitaria	SUBCLASE	8530
+10033	85303	Educación superior de especialización y postgrado	SUBCLASE	8530
+10034	854	Otros tipos de enseñanza	GRUPO	85
+10035	8541	Enseñanza deportiva y recreativa	CLASE	854
+10036	85411	Escuelas deportivas	SUBCLASE	8541
+10037	85412	Enseñanza de gimnasia	SUBCLASE	8541
+10038	85413	Enseñanza de equitación	SUBCLASE	8541
+10039	85414	Escuela de natación	SUBCLASE	8541
+10040	85415	Actividades de instructores y entrenadores deportivos	SUBCLASE	8541
+10041	85416	Escuelas de artes marciales	SUBCLASE	8541
+10042	85417	Enseñanza de yoga	SUBCLASE	8541
+10043	85419	Otros tipos de enseñanza deportiva y recreativa n.c.p.	SUBCLASE	8541
+10044	8542	Enseñanza cultural	CLASE	854
+10045	85421	Enseñanza de música	SUBCLASE	8542
+10046	85422	Enseñanza de escuelas y academias de baile	SUBCLASE	8542
+10047	85423	Enseñanza de artes interpretativas	SUBCLASE	8542
+10048	85424	Enseñanza de bellas artes	SUBCLASE	8542
+10049	85425	Enseñanza de fotografía	SUBCLASE	8542
+10050	85429	Otros tipos de enseñanza cultural n.c.p	SUBCLASE	8542
+10051	8549	Otros tipos de enseñanza n.c.p.	CLASE	854
+10052	85491	Enseñanza en informática	SUBCLASE	8549
+10053	85492	Escuelas de modelaje	SUBCLASE	8549
+10054	85493	Enseñanza de idiomas	SUBCLASE	8549
+10055	85494	Servicio de tutoría académica	SUBCLASE	8549
+10056	85495	Cursos de nivelacióny preparaciónpara ingresar a la universidad	SUBCLASE	8549
+10057	85496	Enseñanza para la conducción de automotoresyaeronaves	SUBCLASE	8549
+10058	85497	Enseñanza comercial, contable y secretariado	SUBCLASE	8549
+10059	85498	Enseñanza de oficios	SUBCLASE	8549
+10060	85499	Otros tipos de enseñanza n.c.p	SUBCLASE	8549
+10061	855	Actividades de apoyo a la enseñanza	GRUPO	85
+10062	8550	Actividades de apoyo a la enseñanza	CLASE	855
+10063	85501	Consultoría en educación	SUBCLASE	8550
+10064	85509	Servicios de apoyo educativo n.c.p.	SUBCLASE	8550
+10065	Q	SERVICIOS DE SALUD Y DE ASISTENCIA SOCIAL	SECCION	\N
+10066	86	ACTIVIDADES DE ATENCIÓN DE LA SALUD HUMANA	DIVISION	Q
+10067	861	Servicios de hospitales	GRUPO	86
+10068	8610	Servicios de hospitales	CLASE	861
+10069	86100	Servicios de hospitales	SUBCLASE	8610
+10070	862	Servicios médicos y odontológicos	GRUPO	86
+10071	8620	Servicios médicos y odontológicos	CLASE	862
+10072	86201	Servicio de atención médica en clínicas	SUBCLASE	8620
+10073	86202	Consultorios médicos	SUBCLASE	8620
+10074	86203	Consultorios odontológicos	SUBCLASE	8620
+10075	86204	Servicios de centros de planificación familiar	SUBCLASE	8620
+10076	86205	Servicios de policonsultorios y otros centros de salud	SUBCLASE	8620
+10077	869	Otros servicios relacionados con la salud humana	GRUPO	86
+10078	8691	Servicios de medicina tradicional y alternativa	CLASE	869
+10079	86910	Servicios de medicina tradicional y alternativa	SUBCLASE	8691
+10080	8699	Otros servicios relacionados con la salud humana	CLASE	869
+10081	86991	Servicios de laboratorios clínicos	SUBCLASE	8699
+10082	86992	Servicios de diagnóstico por imagen	SUBCLASE	8699
+10083	86993	Servicios de enfermeros, parteras, fisioterapeutas y otro personal especializado	SUBCLASE	8699
+10084	86994	Servicios de bancos de sangre, esperma y de otros órganos	SUBCLASE	8699
+10085	86999	Otros servicios relacionados con la salud humana n.c.p.	SUBCLASE	8699
+10086	87	ACTIVIDADES DE ATENCIÓN EN INSTITUCIONES CON ALOJAMIENTO	DIVISION	86999
+10087	871	Actividades de casas de reposo y convalecencia	GRUPO	87
+10088	8710	Actividades de casas de reposo y convalecencia	CLASE	871
+10089	87100	Actividades de casas de reposo y convalecencia	SUBCLASE	8710
+10090	872	Servicios de atención en instituciones para personas con capacidades diferentes, enfermos mentales y toxicómanos con alojamiento	GRUPO	87
+10091	8720	Servicios de atención en instituciones a personas con capacidades diferentes, perturbaciones emocionales y toxicómanos con alojamiento	CLASE	872
+10092	87201	Instituciones de atención a personas con capacidades diferentes con alojamiento	SUBCLASE	8720
+10093	87202	Instituciones de atención a personas con problemas de salud mental con alojamiento	SUBCLASE	8720
+10094	87203	Instituciones de atención y tratamiento de alcoholismo y drogodependencia con alojamiento	SUBCLASE	8720
+10095	873	Servicios de atención en instituciones para personas de la tercera edad y personas minusválidas con alojamiento	GRUPO	87
+10096	8730	Servicios de atención en instituciones para personas de la tercera edad y personas minusválidas con alojamiento	CLASE	873
+10097	87300	Servicios de atención en instituciones para personas de la tercera edad y personas minusválidas con alojamiento	SUBCLASE	8730
+10098	879	Otras actividades de atención en instituciones con alojamiento	GRUPO	87
+10099	8790	Otras actividades de atención en instituciones con alojamiento	CLASE	879
+10100	87901	Servicios de orfanatos, hogares y albergues infantiles	SUBCLASE	8790
+10101	87902	Albergues temporales para personas sin hogar con alojamiento	SUBCLASE	8790
+10102	87903	Instituciones que atienden a madres solteras y a sus hijos con alojamiento	SUBCLASE	8790
+10103	87904	Servicio de hogares correccionales	SUBCLASE	8790
+10104	87909	Otras actividades de asistencia social en instituciones con alojamiento n.c.p.	SUBCLASE	8790
+10105	88	ACTIVIDADES DE ASISTENCIA SOCIAL SIN ALOJAMIENTO	DIVISION	87909
+10106	881	Actividades de asistencia social sin alojamiento para personas de la tercera edad y personas  minusválidas	GRUPO	88
+10107	8810	Actividades de asistencia social sin alojamiento para personas de la tercera edad y personas  minusválidas	CLASE	881
+10108	88101	Actividades de asistencia social sin alojamiento para personas de la tercera edad	SUBCLASE	8810
+10109	88102	Actividades de asistencia social sin alojamiento para personas minusválidas	SUBCLASE	8810
+10110	889	Otras actividades de asistencia social sin alojamiento n.c.p.	GRUPO	88
+10111	8890	Otras actividades de asistencia social sin alojamiento n.c.p.	CLASE	889
+10112	88901	Servicios de guardería para niños	SUBCLASE	8890
+10113	88902	Servicios sociales de orientación familiar sin alojamiento	SUBCLASE	8890
+10114	88903	Servicios de ayuda a víctimas de desastres, refugiados e inmigrantes, sin alojamiento	SUBCLASE	8890
+10115	88904	Servicios de comedores populares y similares	SUBCLASE	8890
+10116	88905	Servicios de asistencia para problemas de adicciones sin alojamiento	SUBCLASE	8890
+10117	88909	Otras actividades de asistencia social sin alojamiento n.c.p	SUBCLASE	8890
+10118	R	ACTIVIDADES ARTÍSTICAS, DE ENTRETENIMIENTO Y RECREATIVAS	SECCION	\N
+10119	90	ACTIVIDADES CREATIVAS, ARTÍSTICAS Y DE ENTRETENIMIENTO	DIVISION	R
+10120	900	Producción de obras de teatro, conciertos, espectáculos musicales, danza y otras producciones escénicas	GRUPO	90
+10121	9001	Producción de obras de teatro, conciertos, espectáculos musicales, danza y otras producciones escénicas	CLASE	900
+10122	90011	Producción de obras de teatro	SUBCLASE	9001
+10123	90012	Actividades de compañías de danza	SUBCLASE	9001
+10124	90013	Actividades de músicos, orquestas, bandas y sus directores	SUBCLASE	9001
+10125	90014	Actividades de escritores	SUBCLASE	9001
+10126	90015	Actividades de escultores, pintores, dibujantes y grabadores	SUBCLASE	9001
+10127	90016	Actividades de periodistas independientes	SUBCLASE	9001
+10128	90017	Actividades de productores o empresarios de espectáculos artísticos	SUBCLASE	9001
+10129	90018	Actividades de servicios de amplificación y discjockey	SUBCLASE	9001
+10130	90019	Otros servicios de espectáculos artísticos n.c.p.	SUBCLASE	9001
+10131	91	ACTIVIDADES  DE BIBLIOTECAS, ARCHIVOS, MUSEOS Y OTRAS ACTIVIDADES CULTURALES	DIVISION	90019
+10132	910	Actividades de bibliotecas, archivos, museos y otras actividades culturales	GRUPO	91
+10133	9101	Actividades de bibliotecas y archivos	CLASE	910
+10134	91010	Actividades de bibliotecas y archivos	SUBCLASE	9101
+10135	9102	Actividades de museos, gestión de lugares y edificios históricos	CLASE	910
+10136	91020	Actividades de museos, gestión de lugares y edificios históricos	SUBCLASE	9102
+10137	9103	Actividades de jardines botánicos, zoológicos y de parques nacionales	CLASE	910
+10138	91030	Actividades de jardines botánicos, zoológicos y de parques nacionales	SUBCLASE	9103
+10139	92	ACTIVIDADES DE JUEGOS DE AZAR Y APUESTAS	DIVISION	91030
+10140	920	Actividades de juegos de azar y apuestas	GRUPO	92
+10141	9200	Actividades de juegos de azar y apuestas	CLASE	920
+10142	92001	Juego de lotería	SUBCLASE	9200
+10143	92002	Casinos	SUBCLASE	9200
+10144	92009	Otros juegos de azar y apuestas	SUBCLASE	9200
+10145	93	ACTIVIDADES DEPORTIVAS, DE ESPARCIMIENTO Y RECREATIVAS	DIVISION	92009
+10146	931	Actividades deportivas	GRUPO	93
+10147	9311	Actividades deportivas	CLASE	931
+10148	93111	Servicios de instalaciones para la práctica deportiva	SUBCLASE	9311
+10149	93112	Actividades de producción y organización de actividades deportivas	SUBCLASE	9311
+10150	9312	Actividades de clubes deportivos	CLASE	931
+10151	93120	Actividades de clubes deportivos	SUBCLASE	9312
+10152	9319	Otras actividades deportivas	CLASE	931
+10153	93191	Actividades de ligas y órganos reguladores	SUBCLASE	9319
+10154	93192	Actividades por cuenta propia de deportistas, árbitros, jueces y cronometradores	SUBCLASE	9319
+10155	93193	Actividades de guías de montaña	SUBCLASE	9319
+10156	93199	Otras actividades deportivas n.c.p.	SUBCLASE	9319
+10157	932	Otras actividades de esparcimiento y recreativas	GRUPO	93
+10158	9321	Actividades de parques de atracciones	CLASE	932
+10159	93210	Actividades de parques de atracciones	SUBCLASE	9321
+10160	9329	Otras actividades de esparcimiento y recreativas n.p.c.	CLASE	932
+10161	93291	Actividades de salones de baile, discotecas y similares	SUBCLASE	9329
+10162	93292	Actividades de juegos electrónicos, mecánicos accionados con fichas	SUBCLASE	9329
+10163	93299	Otras actividades de esparcimiento y recreativas n.p.c.	SUBCLASE	9329
+10164	S	OTRAS ACTIVIDADES DE SERVICIOS	SECCION	\N
+10165	94	ACTIVIDADES DE ASOCIACIONES	DIVISION	S
+10166	941	Actividades de asociaciones empresariales, profesionales y de empleadores	GRUPO	94
+10167	9411	Actividades de asociaciones empresariales y de empleadores	CLASE	941
+10168	94110	Actividades de asociaciones empresariales y de empleadores	SUBCLASE	9411
+10169	9412	Actividades de asociaciones profesionales	CLASE	941
+10170	94120	Actividades de colegios de profesionales, sociedades científicas	SUBCLASE	9412
+10171	942	Actividades de sindicatos	GRUPO	94
+10172	9420	Actividades de sindicatos	CLASE	942
+10173	94200	Actividades de sindicatos	SUBCLASE	9420
+10175	9491	Actividades de organizaciones religiosas	CLASE	949
+10176	94910	Actividades de organizaciones religiosas	SUBCLASE	9491
+10177	9492	Actividades de organizaciones políticas	CLASE	949
+10178	94920	Actividades de organizaciones políticas	SUBCLASE	9492
+10179	9499	Actividades de otras asociaciones n.c.p.	CLASE	949
+10180	94991	Organización de protección de los derechos humanos	SUBCLASE	9499
+10181	94992	Organizaciones que promueven el desarrollo comunitario y cívico	SUBCLASE	9499
+10182	94993	Servicios de clubes de rotarios y logias	SUBCLASE	9499
+10183	94994	Asociación de copropietarios	SUBCLASE	9499
+10184	94995	Organizaciones ambientalistas y ecologistas	SUBCLASE	9499
+10185	94996	Asociaciones protectoras de animales	SUBCLASE	9499
+10186	94999	Otros servicios proporcionados por asociaciones n.c.p.	SUBCLASE	9499
+10187	95	REPARACIÓN DE ORDENADORES Y DE EFECTOS PERSONALES Y ENSERES DOMÉSTICOS	DIVISION	94999
+10188	951	Reparación de computadores y equipo de comunicaciones	GRUPO	95
+10189	9511	Reparación de computadoras, servidores informáticos y terminales informáticas	CLASE	951
+10190	95110	Reparación de computadoras, servidores informáticos y terminales informáticas	SUBCLASE	9511
+10191	9512	Reparación y mantenimiento de equipo de comunicaciones	CLASE	951
+10192	95120	Reparación y mantenimiento de equipo de comunicaciones	SUBCLASE	9512
+10193	952	Reparación de efectos personales y enseres domésticos	GRUPO	95
+10194	9521	Reparación de aparatos electrónicos de consumo	CLASE	952
+10195	95210	Reparación de aparatos electrónicos de consumo	SUBCLASE	9521
+10196	9522	Reparación de aparatos de uso doméstico	CLASE	952
+10197	95220	Reparación de aparatos de uso doméstico	SUBCLASE	9522
+10198	9523	Reparación y mantenimiento de calzado y artículos de cuero	CLASE	952
+10199	95230	Reparación y mantenimiento de calzado y artículos de cuero	SUBCLASE	9523
+10200	9524	Reparación de muebles y accesorios domésticos	CLASE	952
+10201	95240	Reparación de muebles y accesorios domésticos	SUBCLASE	9524
+10202	9529	Reparación de otros efectos personales y enseres domésticos	CLASE	952
+10203	95291	Reparación y arreglo de prendas de vestir	SUBCLASE	9529
+10204	95292	Reparación de bicicletas, triciclos y similares	SUBCLASE	9529
+10205	95293	Reparación de relojes	SUBCLASE	9529
+10206	95294	Reparación de instrumentos musicales	SUBCLASE	9529
+10207	95295	Servicios de copia de llaves	SUBCLASE	9529
+10208	95299	Reparación de otros efectos personales y enseres domésticos n.c.p.	SUBCLASE	9529
+10209	96	OTRAS ACTIVIDADES DE SERVICIOS PERSONALES	DIVISION	95299
+10210	960	Otras actividades de servicios personales	GRUPO	96
+10211	9601	Servicios de lavado y limpieza, incluida la limpieza en seco, de productos textiles y de piel	CLASE	960
+10212	96010	Servicios de lavado y limpieza, incluida la limpieza en seco, de productos textiles y de piel	SUBCLASE	9601
+10213	9602	Servicios de peluquería y otros tratamientos de belleza	CLASE	960
+10214	96020	Servicios de peluquería y otros tratamientos de belleza	SUBCLASE	9602
+10215	9603	Servicios funerarios y actividades conexas	CLASE	960
+10216	96030	Servicios funerarios y actividades conexas	SUBCLASE	9603
+10217	9604	Actividades de baños turcos, saunas y baños de vapor	CLASE	960
+10218	96040	Actividades de baños turcos, saunas y baños de vapor	SUBCLASE	9604
+10219	9605	Servicios de centros de estética y spa	CLASE	960
+10220	96050	Servicios de centros de estética y spa	SUBCLASE	9605
+10221	9606	Servicios de adivinos, yatiris, espiritistas, astrólogos y afines	CLASE	960
+10222	96060	Servicios de adivinos, yatiris, espiritistas, astrólogos y afines	SUBCLASE	9606
+10223	9609	Otras actividades de servicios personales n.c.p.	CLASE	960
+10224	96091	Servicios de clubes nocturnos, lenocinios y casas de tolerancia	SUBCLASE	9609
+10225	96092	Servicios para animales domésticos	SUBCLASE	9609
+10226	96093	Servicios de limpiabotas	SUBCLASE	9609
+10227	96094	Servicios de cuidadores de vehículos	SUBCLASE	9609
+10228	96095	Servicio de baños públicos	SUBCLASE	9609
+10229	96096	Servicios de traslado de maletas, changadores y cargadores y afines	SUBCLASE	9609
+10230	96097	Explotación de máquinas de servicios personales como básculas, aparatos para tomar tensión y afines	SUBCLASE	9609
+10231	96099	Otras actividades de servicios personales n.c.p.	SUBCLASE	9609
+10232	T	ACTIVIDADES DE HOGARES PRIVADOS COMO EMPLEADORES; ACTIVIDADES NO DIFERENCIADAS DE LOS HOGARES COMO PRODUCTORES DE BIENES  Y SERVICIOS PARA USO PROPIO	SECCION	\N
+10233	97	ACTIVIDADES DE HOGARES COMO EMPLEADORES DE PERSONAL DOMÉSTICO	DIVISION	T
+10234	970	Actividades de hogares privados como empleadores de personal doméstico	GRUPO	97
+10235	9700	Actividades de hogares privados como empleadores de personal doméstico	CLASE	970
+10236	97000	Actividades de hogares privados como empleadores de personal doméstico	SUBCLASE	9700
+10237	98	ACTIVIDADES NO DIFERENCIADAS DE LOS HOGARES COMO PRODUCTORES DE BIENES Y SERVICIOS PARA USO PROPIO	DIVISION	97000
+10238	981	Actividades no diferenciadas de los hogares como productores de bienes para uso propio	GRUPO	98
+10239	9810	Actividades no diferenciadas de los hogares como productores de bienes para uso propio	CLASE	981
+10240	98100	Actividades no diferenciadas de hogares como productores de bienes para uso propio	SUBCLASE	9810
+10241	982	Actividades no diferenciadas de los hogares como productores de servicios para uso propio	GRUPO	98
+10242	9820	Actividades no diferenciadas de hogares privados como productores de servicios para uso propio	CLASE	982
+10243	98200	Actividades no diferenciadas de hogares privados como productores de servicios para uso propio	SUBCLASE	9820
+10244	U	SERVICIO DE ORGANIZACIONES Y ÓRGANOS EXTRATERRITORIALES	SECCION	\N
+10245	99	SERVICIO DE ORGANIZACIONES Y ÓRGANOS EXTRATERRITORIALES	DIVISION	U
+10246	990	Servicio de organizaciones y órganos extraterritoriales	GRUPO	99
+10247	9900	Servicio de organizaciones y órganos extraterritoriales	CLASE	990
+10248	99000	Servicio de organizaciones y órganos extraterritoriales	SUBCLASE	9900
+\.
+
+
+--
+-- Name: clasificadores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('clasificadores_id_seq', 10248, true);
+
+
+--
+-- Name: clasificadores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY clasificadores
+    ADD CONSTRAINT clasificadores_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

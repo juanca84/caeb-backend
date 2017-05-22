@@ -1,8 +1,7 @@
 /**
- * Modelo para Usuarios del sistema
+ * Modelo de los clasificadores del sistema
  *
  **/
-const crypto = require ('crypto')
 
 module.exports = (sequelize, DataType) => {
   const clasificador = sequelize.define('clasificadores', {
@@ -10,38 +9,36 @@ module.exports = (sequelize, DataType) => {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      xlabel: 'Identificador',
+      xlabel: 'Identificador'
     },
     codigo: {
       type: DataType.STRING,
       allowNull: false,
       unique: true,
-      xlabel: 'Código clasificador',
+      xlabel: 'Código clasificador'
     },
     descripcion: {
       type: DataType.STRING,
       allowNull: false,
-      xlabel: 'Descripción clasificador',
+      xlabel: 'Descripción clasificador'
     },
     tipo: {
       type: DataType.STRING,
       allowNull: false,
-      xlabel: 'Tipo de clasificador',
+      xlabel: 'Tipo de clasificador'
     },
-    id_padre: {
+    codigo_padre: {
       type: DataType.INTEGER,
       allowNull: true,
-      xlabel: 'Identificador del padre',
-    },
-  },{
-    createdAt: '_fecha_creacion',
-    updatedAt: '_fecha_modificacion',
+      xlabel: 'Identificador del padre'
+    }
+  }, {
     freezeTableName: true,
     classMethods: {
       associate: models => {
-        models.clasificadores.belongsTo(models.clasificadores, { as: 'clasificador', foreignKey: 'id_padre' })
-      },
-    },
+        models.clasificadores.belongsTo(models.clasificadores, { as: 'clasificadores', foreignKey: 'codigo_padre' })
+      }
+    }
   })
   return clasificador
 }

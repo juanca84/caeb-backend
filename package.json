@@ -9,7 +9,7 @@
     "produccion": "NODE_ENV=production node index.js",
     "lint": "eslint *.js lib/*.js src/models/*/*.js src/routes/*/*.js test/*.js src/bl/*/*.js",
     "apidoc": "apidoc -i src/routes/ -o public/apidoc",
-    "setup": "FORCE=true node index.js && sequelize db:seed:all --seeders-path src/seeders",
+    "setup": "FORCE=true node index.js",
     "setup-respaldo": "FORCE=true node index.js && sequelize db:seed:all --seeders-path src/seeders/respaldo",
     "gen-rutas": "node generar-routes.js",
     "startdev": "nodemon --exec 'node index.js'",
@@ -17,8 +17,7 @@
     "instalar": "npm install && node parches/parchar.js",
     "gen-semillas": "node generarSeeders.js",
     "importar": "node src/scripts/importar.js && node src/scripts/testear.js",
-    "truncar": "node src/scripts/truncar.js",
-    "testear": "node src/scripts/testear.js"
+    "registrar": "node src/scripts/registrar.js"
   },
   "keywords": [
     "node",
