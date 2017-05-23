@@ -90,36 +90,6 @@ Verificar la instalación
         # \l
         # \q
 
-#### 5.2 MySql
-
-    $ sudo apt-get install mysql-server
-
-#### 5.2.1 Creación de la base de datos
-
-Ingresar la contraseña establecida al instalar mysql.
-
-    $ mysql -u root -p
-
-Crear un nuevo usuario
-
-    create user '[miUsuarioDB]'@'localhost' identified by '[miContraseña]';
-
-Crear la base de datos
-
-    create database [miBD];
-
-Verificar la creacion de la base de datos
-
-    show databases;
-
-Otorgar privilegios al usuario
-
-    GRANT ALL PRIVILEGES ON [miBD].* TO [miUsuarioDB]@localhost;
-
-Verificar la asignación de privilegios
-
-    show grants for dev@localhost;
-
 ## B. INSTALACIÓN DEL BACKEND
 
 ### 1. Iniciando el servidor backend

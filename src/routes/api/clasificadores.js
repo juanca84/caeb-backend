@@ -23,11 +23,11 @@ module.exports = app => {
       })
     } else if (req.query.des) {
       Clasificador.findAll({
-        where: ["descripcion LIKE ? AND tipo = 'SUBCLASE'", `%${req.query.des}%` ]
+        where: ["descripcion ILIKE ? AND tipo = 'SUBCLASE'", `%${req.query.des}%`]
       })
       .then(pClasificadores => {
         if (pClasificadores.length > 0) {
-          obtenerPadres(Clasificador, pClasificadores[0].dataValues.codigo)
+          iterarResultados(Clasificador, pClasificadores)
           .then((respuesta) => {
             res.status(200).send(util.formatearMensaje('EXITO', 'Obtencion de datos exitoso', { total: pClasificadores.length, datos: respuesta }))
           })
@@ -66,7 +66,13 @@ module.exports = app => {
   })
 }
 
-//functions iterarResultados (p)
+function iterarResultados (pModel, arrayResultados) {
+  return new Promise((resolve, reject) => {
+    const promesas = arrayResultados.map((item) => obtenerPadres(pModel, item.dataValues.codigo))
+    const results = Promise.all(promesas)
+    results.then(data => resolve(data))
+  })
+}
 
 function obtenerPadres (pModel, pCodSubClase) {
   return new Promise((resolve, reject) => {
@@ -85,10 +91,6 @@ function obtenerPadres (pModel, pCodSubClase) {
     )
     .then(pSubClase => {
       subclase = pSubClase.dataValues
-      // {
-      //   codigo: pSubClase.dataValues.codigo,
-      //   descripcion: pSubClase.dataValues.descripcion
-      // }
     })
     .then(pSubClase => {
       pModel.findOne(
@@ -101,10 +103,6 @@ function obtenerPadres (pModel, pCodSubClase) {
       )
       .then(pClase => {
           clase = pClase.dataValues
-          // {
-          //   codigo: pClase.dataValues.codigo,
-          //   descripcion: pClase.dataValues.descripcion
-          // }
       })
       .then(() => {
         pModel.findOne(
@@ -117,10 +115,6 @@ function obtenerPadres (pModel, pCodSubClase) {
         )
         .then(pGrupo => {
           grupo = pGrupo.dataValues
-          // {
-          //   codigo: pGrupo.dataValues.codigo,
-          //   descripcion: pGrupo.dataValues.descripcion
-          // }
         })
         .then(() => {
           pModel.findOne(
@@ -133,10 +127,6 @@ function obtenerPadres (pModel, pCodSubClase) {
           )
           .then(pDivision => {
             division = pDivision.dataValues
-            // {
-            //   codigo: pDivision.dataValues.codigo,
-            //   descripcion: pDivision.dataValues.descripcion
-            // }
           })
           .then(() => {
             pModel.findOne(
@@ -149,32 +139,28 @@ function obtenerPadres (pModel, pCodSubClase) {
             )
             .then(pSeccion => {
               seccion = pSeccion.dataValues
-              // {
-              //   codigo: pSeccion.dataValues.codigo,
-              //   descripcion: pSeccion.dataValues.descripcion
-              // }
             })
             .then(() => {
               return resolve({
-                seccion: {
-                  codigo: seccion.codigo,
-                  descripcion: seccion.descripcion
-                },
-                division: {
-                  codigo: division.codigo,
-                  descripcion: division.descripcion
-                },
-                grupo: {
-                  codigo: grupo.codigo,
-                  descripcion: grupo.descripcion
+                subclase: {
+                  codigo: subclase.codigo,
+                  descripcion: subclase.descripcion
                 },
                 clase: {
                   codigo: clase.codigo,
                   descripcion: clase.descripcion
                 },
-                subclase: {
-                  codigo: subclase.codigo,
-                  descripcion: subclase.descripcion
+                grupo: {
+                  codigo: grupo.codigo,
+                  descripcion: grupo.descripcion
+                },
+                division: {
+                  codigo: division.codigo,
+                  descripcion: division.descripcion
+                },
+                seccion: {
+                  codigo: seccion.codigo,
+                  descripcion: seccion.descripcion
                 }
               })
             })
